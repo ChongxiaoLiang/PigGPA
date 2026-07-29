@@ -1,0 +1,69 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.4 Linux
+* Built at Apr  7 2025 11:00:19, by GCC 8.3
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 23:31:02 CST on Wed Jul 22 2026.
+Hostname: ecm-e3c2
+
+Accepted options:
+--bfile /workspace/output/genotype-qc/lmd.phe_qc
+--grm /workspace/output/gcta-gwas/lmd_grm
+--pheno /workspace/output/gcta-gwas/lmd_pheno.txt
+--covar /workspace/output/gcta-gwas/lmd_discrete.cov
+--qcovar /workspace/output/gcta-gwas/lmd_qcovar.txt
+--mlma 
+--out /workspace/output/gcta-gwas/lmd_gcta
+--thread-num 4
+
+Note: the program will be running on 4 threads.
+
+Reading PLINK FAM file from [/workspace/output/genotype-qc/lmd.phe_qc.fam].
+2770 individuals to be included from [/workspace/output/genotype-qc/lmd.phe_qc.fam].
+Reading PLINK BIM file from [/workspace/output/genotype-qc/lmd.phe_qc.bim].
+197702 SNPs to be included from [/workspace/output/genotype-qc/lmd.phe_qc.bim].
+Reading PLINK BED file from [/workspace/output/genotype-qc/lmd.phe_qc.bed] in SNP-major format ...
+Genotype data for 2770 individuals and 197702 SNPs to be included from [/workspace/output/genotype-qc/lmd.phe_qc.bed].
+Reading phenotypes from [/workspace/output/gcta-gwas/lmd_pheno.txt].
+Non-missing phenotypes of 2770 individuals are included from [/workspace/output/gcta-gwas/lmd_pheno.txt].
+Reading quantitative covariate(s) from [/workspace/output/gcta-gwas/lmd_qcovar.txt].
+1 quantitative covariate(s) of 2130 individuals are included from [/workspace/output/gcta-gwas/lmd_qcovar.txt].
+Reading discrete covariate(s) from [/workspace/output/gcta-gwas/lmd_discrete.cov].
+2 discrete covariate(s) of 2130 individuals are included from [/workspace/output/gcta-gwas/lmd_discrete.cov].
+Reading IDs of the GRM from [/workspace/output/gcta-gwas/lmd_grm.grm.id].
+2770 IDs are read from [/workspace/output/gcta-gwas/lmd_grm.grm.id].
+Reading the GRM from [/workspace/output/gcta-gwas/lmd_grm.grm.bin].
+GRM for 2770 individuals are included from [/workspace/output/gcta-gwas/lmd_grm.grm.bin].
+2129 individuals are in common in these files.
+1 quantitative variable(s) included as covariate(s).
+2 discrete variable(s) included as covariate(s).
+
+Performing MLM association analyses (including the candidate SNP) ...
+
+Performing  REML analysis ... (Note: may take hours depending on sample size).
+2129 observations, 19 fixed effect(s), and 2 variance component(s)(including residual variance).
+Calculating prior values of variance components by EM-REML ...
+Updated prior values: 7.36341 7.89473
+logL: -3723.11
+Running AI-REML algorithm ...
+Iter.	logL	V(G)	V(e)	
+1	-3720.84	6.29827	8.23871	
+2	-3715.61	5.68872	8.46173	
+3	-3713.49	5.31660	8.60922	
+4	-3712.58	5.08034	8.70793	
+5	-3712.18	4.59366	8.91850	
+6	-3711.85	4.61342	8.91599	
+7	-3711.84	4.61348	8.91598	
+8	-3711.84	4.61348	8.91598	
+9	-3711.84	4.61348	8.91598	
+Log-likelihood ratio converged.
+Calculating allele frequencies ...
+
+Running association tests for 197702 SNPs ...
+
+Saving the results of the mixed linear model association analyses of 197702 SNPs to [/workspace/output/gcta-gwas/lmd_gcta.mlma] ...
+
+Analysis finished at 23:48:26 CST on Wed Jul 22 2026
+Overall computational time: 17 minutes 24 sec.

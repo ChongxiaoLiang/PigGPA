@@ -1,0 +1,93 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_224724_2ba27a  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Plot principal components
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     pca  0.0s
+  │ 🔎 find      *.bed  2.2s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the PCA skill and found several PLINK datasets in the          
+     workspace. However, I need a bit more direction from you before I can      
+     proceed.                                                                   
+                                                                                
+     **What I need to know:**                                                   
+                                                                                
+     1. **Which dataset?** I found multiple PLINK (.bed) datasets,              
+     including:                                                                 
+        - `/workspace/pigbole/testdata/testdata/testps.bed` — appears to be     
+     the main test dataset with sample prefixes like `CB`, `PS` etc.            
+        - `/workspace/pigbole/testdata/testdata/testps_new.bed` — a newer       
+     version                                                                    
+        - Several `demo.bed` files under `/workspace/algba_data/`               
+        - Various QC'd/pruned datasets                                          
+                                                                                
+        Which one should I use? (If you're unsure, `testps` is the standard     
+     test dataset.)                                                             
+                                                                                
+     2. **Group coloring?** Do you have a group file for sample                 
+     classification, or should I auto-group samples by their ID prefix          
+     (e.g., `CB1-1` → group `CB`, `PS1-1` → group `PS`)?                        
+                                                                                
+     3. **Number of PCs?** Default is 10. Do you want a different number?       
+                                                                                
+     4. **Chromosome?** Default is all chromosomes. Restrict to a specific      
+     one?                                                                       
+                                                                                
+     5. **Output directory?** Do you have a preference, or can I use            
+     something like `output/pca/`?                                              
+                                                                                
+     The PCA skill will produce scree plots, PC scatter plots (PC1 vs PC2,      
+     PC1 vs PC3, PC2 vs PC3), and density distributions — all in both PDF       
+     and PNG formats at 300 DPI.                                                
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_224724_2ba27a
+
+Session:        20260701_224724_2ba27a
+Duration:       23s
+Messages:       6 (2 user, 3 tool calls)

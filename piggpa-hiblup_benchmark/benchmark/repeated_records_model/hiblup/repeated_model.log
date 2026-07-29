@@ -1,0 +1,101 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 17:19:26 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --single-trait \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --pheno phenotype_long.txt \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --pheno-pos 5 \
+  --dcovar 2,3 \
+  --rand 1 \
+  --add \
+  --thread 4 \
+  --float-prec \
+  --out repeated_model 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [repeated_model.log].
+
+Loading phenotype file ...
+3000 individuals have been detected in file [phenotype_long.txt].
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+3000 effective records without missing will be used for analysis.
+
+Single Trait Model Fitted:
+  weight = 1 + sex(F) + season(F) + ID(R[E]) + GA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Total 3000 individuals will be predicted.
+
+Total 3 variance components need to be estimated.
+Variance components estimation using: AI(20)
+The matrix V has a dimension of 3000 x 3000.
+Running ...
+Alg.	Iter.	LogL.	V(ID)	V(GA)	V(e)
+[AI]	1	-7627.11	69.29290	43.42924	16.72825	
+[AI]	2	-7053.13	82.21101	20.23279	13.64745	
+[AI]	3	-7037.39	79.63826	24.80340	14.11033	
+[AI]	4	-7036.75	79.73732	24.80704	14.12658	
+[AI]	5	-7036.86	79.73578	24.80874	14.12658	
+[AI]	6	-7037.60	79.73653	24.80784	14.12658	
+[AI]	7	-7037.85	79.73634	24.80810	14.12659	
+[AI]	8	-7037.58	79.73637	24.80805	14.12659	
+[AI]	9	-7037.51	79.73622	24.80831	14.12659	
+[AI]	10	-7037.66	79.73656	24.80787	14.12659	
+[AI]	11	-7037.83	79.73630	24.80812	14.12659	
+[AI]	12	-7037.70	79.73668	24.80775	14.12659	
+[AI]	13	-7037.86	79.73674	24.80772	14.12659	
+[AI]	14	-7037.68	79.73639	24.80802	14.12659	
+[AI]	15	-7037.61	79.73623	24.80823	14.12659	
+[AI]	16	-7037.68	79.73657	24.80792	14.12659	
+[AI]	17	-7037.74	79.73636	24.80808	14.12659	
+[AI]	18	-7037.56	79.73621	24.80834	14.12659	
+[AI]	19	-7037.78	79.73678	24.80771	14.12659	
+[AI]	20	-7037.67	79.73634	24.80795	14.12659	
+[Converged?] No! More iterations are required.
+
+Summary of estimated variances and heritability:
+        Var Var_SE     h2  h2_SE h2_Pr(Chisq)
+ ID 79.7363 7.4869 0.6719 0.0592       <2e-16
+ GA 24.8079 7.3403 0.2090 0.0597     0.000467
+  e 14.1266 0.4467 0.1190 0.0061       <2e-16
+Results of estimated variance components have been saved in the file [repeated_model.vars].
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients:
+        Levels Estimation     SE
+            mu   197.1324 0.7230
+         sex_M     5.2299 0.6557
+ season_Spring     3.9846 0.9143
+ season_Summer    10.8512 0.9003
+ season_Winter    -5.3374 0.9622
+Coefficients of all covariates and fixed effects are saved in file [repeated_model.beta].
+Analysis of variance table:
+ Factors   Df  SumSq MeanSq         F Pr(>F)
+     sex    1  20458  20458 1448.2092 <2e-16
+  season    3 103876  34625 2451.0833 <2e-16
+       e 2995  42309     14
+Analysis of variance table has been saved in file [repeated_model.anova].
+Random effects of all individuals are saved in file [repeated_model.rand].
+
+Analysis finished: Thu Apr 02 17:19:30 2026
+Total running time: 0h0m4s

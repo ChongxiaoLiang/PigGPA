@@ -1,0 +1,40 @@
+﻿============================================================
+GEBV Prediction Analysis
+============================================================
+Analysis started: Fri Jul 10 23:55:01 2026
+BFILE: /public/share/likui/hanyu/testdata/In-silico-data/simulated_population
+SNP effect file: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/unified_testdata/snp_effect.snpeff
+Output: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/benchmark/gebv_prediction/piggpa_G/t16
+Prediction sample IDs: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/unified_testdata/pred_samples.txt
+
+[1/6] Reading PLINK files...
+  Total samples: 10000
+  Total SNPs: 100000
+
+[2/6] Reading SNP effect file...
+  SNP effect count: 5556
+
+[3/6] Matching SNPs...
+  Common SNPs with effect file: 5556
+  SNPs used for prediction: 5556
+
+[4/6] Extracting genotype data for prediction samples...
+  Prediction samples found: 1000
+  Genotype matrix: 1000 samples x 5556 SNPs
+
+[5/6] Computing GEBV...
+  GEBV mean: 0.3609
+  GEBV std: 0.9157
+  GEBV min: -2.7878
+  GEBV max: 3.1866
+
+[6/6] Saving results...
+  Prediction sample list saved: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/benchmark/gebv_prediction/piggpa_G/t16/pred_samples.txt
+  SNP list saved: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/benchmark/gebv_prediction/piggpa_G/t16/snp_list.txt
+  Predicted breeding values saved: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/benchmark/gebv_prediction/piggpa_G/t16/prediction_result.bv
+  Summary (EN) saved: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/benchmark/gebv_prediction/piggpa_G/t16/prediction_summary.txt
+  Summary (ZH) saved: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/benchmark/gebv_prediction/piggpa_G/t16/prediction_summary-zh.txt
+  Plot saved: gebv_gprs_analysis.pdf / gebv_gprs_analysis.png
+
+Analysis completed: Fri Jul 10 23:57:01 2026
+Total running time: 2m0s

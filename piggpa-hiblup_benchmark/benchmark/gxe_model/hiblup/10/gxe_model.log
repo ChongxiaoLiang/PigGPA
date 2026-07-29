@@ -1,0 +1,88 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Mon Apr 13 17:10:19 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --single-trait \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --pheno /public/share/likui/hanyu/testdata/In-silico-data/t12/2/simulated_phenotypes_env.txt \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --pheno-pos 4 \
+  --qcovar 2,3 \
+  --add \
+  --rand-gxe 2:GA.GA,3:GA.GA \
+  --thread 4 \
+  --out gxe_model
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [gxe_model.log].
+
+Loading phenotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/t12/2/simulated_phenotypes_env.txt].
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+1000 effective records without missing will be used for analysis.
+
+Single Trait Model Fitted:
+  Trait = 1 + Temp(C) + Humidity(C) + Temp:GA.GA(R[GxE]) + Humidity:GA.GA(R[GxE]) + GA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+Construct G by E XRM ...
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Total 1000 individuals will be predicted.
+
+Total 4 variance components need to be estimated.
+Variance components estimation using: AI(20)
+The matrix V has a dimension of 1000 x 1000.
+Running ...
+Alg.	Iter.	LogL.	V(Temp:GA.GA)	V(Humidity:GA.GA)	V(GA)	V(e)
+[AI]	1	-3213.83	25.02573	41.46473	84.69762	165.80961	
+[AI]	2	-3206.30	0.41777	25.31478	85.60222	200.56810	
+[AI]	3	-3203.14	0.05947	25.08791	85.61439	201.06687	
+[AI]	4	-3203.09	0.01473	25.05959	85.61591	201.12913	
+[AI]	5	-3203.09	0.00355	25.05252	85.61629	201.14470	
+[AI]	6	-3203.09	0.00075	25.05075	85.61638	201.14859	
+[AI]	7	-3203.09	0.00005	25.05030	85.61641	201.14956	
+[AI]	8	-3203.09	0.00001	25.05028	85.61641	201.14962	
+[Converged?] Yes!
+
+Summary of estimated variances and heritability:
+                     Var   Var_SE       h2  h2_SE h2_Pr(Chisq)
+     Temp:GA.GA 8.84e-06 301.8721 2.84e-08 0.9681     1.000000
+ Humidity:GA.GA  25.0503 445.8296   0.0803 1.4296     0.955187
+             GA  85.6164  25.4744   0.2746 0.0789     0.000499
+              e 201.1496 497.8408   0.6451 1.5995     0.686717
+Results of estimated variance components have been saved in the file [gxe_model.vars].
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients:
+   Levels Estimation     SE
+       mu     9.8801 4.7154
+     Temp     2.0016 0.1250
+ Humidity     0.5063 0.0462
+Coefficients of all covariates and fixed effects are saved in file [gxe_model.beta].
+Analysis of variance table:
+  Factors  Df  SumSq MeanSq        F Pr(>F)
+     Temp   1  76852  76852 382.0630 <2e-16
+ Humidity   1  35953  35953 178.7361 <2e-16
+        e 997 200546    201
+Analysis of variance table has been saved in file [gxe_model.anova].
+Random effects of all individuals are saved in file [gxe_model.rand].
+
+Analysis finished: Mon Apr 13 17:10:20 2026
+Total running time: 0h0m1s

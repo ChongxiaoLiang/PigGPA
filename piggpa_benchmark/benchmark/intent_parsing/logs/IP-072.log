@@ -1,0 +1,92 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_232324_a29231  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Visualize ChromHMM states
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     pig-annotation-track  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     我已经加载了 `pig-annotation-track`                                        
+     技能，它可以通过三层组合轨道图来可视化 ChromHMM                            
+     调控状态以及其他基因组注释。                                               
+                                                                                
+     不过，**我需要您指定要可视化的目标**。该工具支持以下几种输入方式：         
+                                                                                
+     | 输入类型 | 示例 | 说明 |                                                 
+     |----------|------|------|                                                 
+     | SNP 位点 | `chr6:50001000` | 以 SNP 为中心，默认两侧各扩展               
+     50KB，红线标记 SNP 位置 |                                                  
+     | 基因组区域 | `chr3:124950000-125100000` |                                
+     可视化指定区域，默认额外扩展 10% |                                         
+     | 基因名称 | `DLL1` | 自动解析基因坐标，默认扩展 20% |                     
+     | ENSSSCG ID | `ENSSSCG00000003043` | 同上 |                               
+                                                                                
+     **生成的输出包含三层轨道：**                                               
+                                                                                
+     1. **基因模型轨道**（顶部）— 外显子/内含子结构、转录方向、基因名称         
+     2. **ChromHMM 调控轨道**（中间）— 14                                       
+     个组织（脂肪、盲肠、小脑、结肠、皮层、十二指肠、下丘脑、回肠、空肠、肝     
+     脏、肺、肌肉、脾脏、胃）的 15 种染色质状态热图                             
+     3. **表达热图轨道**（底部）— 区域内基因在 34 个组织中的 Z-score            
+     标准化表达水平                                                             
+                                                                                
+     ChromHMM 的 15                                                             
+     种状态包括：TssA（活性启动子）、TssAFlnk、TxFlnk、Tx、TxWk、EnhG、Enh      
+     （增强子）、ZNF/Rpts、Het（异染色质）、TssBiv、BivFlnk、EnhBiv、ReprPC     
+     、ReprPCWk 和 Quies（静止状态）。                                          
+                                                                                
+     **请告诉我您想查看哪个区域、SNP 或基因？** 例如：                          
+     - `chr6:50001000`（某个 SNP）                                              
+     - `chr1:100000000-100500000`（某个区域）                                   
+     - `MC4R`（某个基因名）                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_232324_a29231
+
+Session:        20260701_232324_a29231
+Duration:       14s
+Messages:       5 (2 user, 2 tool calls)

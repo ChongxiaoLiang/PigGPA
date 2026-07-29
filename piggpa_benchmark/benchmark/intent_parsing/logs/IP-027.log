@@ -1,0 +1,107 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_222525_78d7c3  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Calculate missingness per sample
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     genotype-qc  0.0s
+  │ 🔎 find      *.bed  0.7s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     # 样本缺失率计算                                                           
+                                                                                
+     我已加载 `genotype-qc` 技能并扫描工作区，找到多个 PLINK                    
+     基因型文件。不过 QC 技能执行的是过滤（--maf, --geno, --mind,               
+     --hwe），不单独输出样本缺失率报告。                                        
+                                                                                
+     ## 可用数据集                                                              
+                                                                                
+     工作区中找到以下 `.bed` 文件（前缀可用来作为 PLINK bfile）：               
+                                                                                
+     | 路径 | 描述 |                                                            
+     |------|------|                                                            
+     | `testdata/testdata/simulated_population_chr1_part` | 模拟群体 chr1 |     
+     | `testdata/testdata/reference_50k` | 50K 参考面板 |                       
+     | `testdata/testdata/reference_2k` | 2K 参考面板 |                         
+     | `testdata/testdata/reference` | 参考面板 |                               
+     | `testdata/testdata/testps` / `testps_new` | 测试数据集 |                 
+     | `core-skills/test/piggpa-G-1/genotype-qc/testps_qc` | 已 QC 数据 |       
+                                                                                
+     ## 执行方案                                                                
+                                                                                
+     PLINK 提供了 `--missing` 命令，可直接输出每个样本的缺失率。命令如下：      
+                                                                                
+     ```bash                                                                    
+     conda activate piggpa                                                      
+     export PATH=/workspace/app/bin:$PATH                                       
+                                                                                
+     plink --bfile <prefix> --missing --out <output_prefix>                     
+     ```                                                                        
+                                                                                
+     这会生成两个文件：                                                         
+                                                                                
+     - **`<output_prefix>.imiss`** — 样本缺失率（你需要的）                     
+       - 列：`FID IID MISS_PHENO N_MISS N_GENO F_MISS`                          
+       - `F_MISS` = 缺失基因型比例 = N_MISS / N_GENO                            
+     - **`<output_prefix>.lmiss`** — 位点缺失率                                 
+       - 列：`CHR SNP N_MISS N_GENO F_MISS`                                     
+                                                                                
+     ## 需要你确认                                                              
+                                                                                
+     请告诉我你要用哪个数据集？例如：                                           
+                                                                                
+     - `testdata/testdata/testps` （测试数据）                                  
+     - `testdata/testdata/reference_50k` （50K 参考面板）                       
+     - 或其他你正在使用的基因型文件                                             
+                                                                                
+     我一确认前缀就立刻运行并返回每个样本的缺失率。                             
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_222525_78d7c3
+
+Session:        20260701_222525_78d7c3
+Duration:       24s
+Messages:       6 (2 user, 3 tool calls)

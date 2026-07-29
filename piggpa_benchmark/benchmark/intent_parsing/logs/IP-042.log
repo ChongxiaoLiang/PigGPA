@@ -1,0 +1,90 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_224613_b6cdc2  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Run PCA on my genotype data
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     pca  0.1s
+  │ 📚 skill     genotype-qc  0.1s
+  │ 📚 skill     genotype-import  0.1s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the PCA skill and related skills. Before I can run the         
+     PCA, I need a few details from you:                                        
+                                                                                
+     **1. Where is your genotype data?**                                        
+     - What's the file path? E.g., `/workspace/data/my_genotypes`               
+     - What format is it in? Options:                                           
+       - PLINK binary (.bed/.bim/.fam) — ready to go                            
+       - VCF (.vcf or .vcf.gz)                                                  
+       - BGEN (.bgen + .sample)                                                 
+       - PED/MAP (.ped + .map)                                                  
+                                                                                
+     **2. Has it been QC'd already?**                                           
+     - If not, I should run genotype-qc first (MAF ≥ 0.05, missingness ≤        
+     5%, HWE p ≥ 1e-6).                                                         
+     - If yes, I can go straight to PCA.                                        
+                                                                                
+     **3. Any preferences for the PCA?**                                        
+     - Number of PCs to compute? (default: 10)                                  
+     - Do you have a group file for coloring samples in the scatter plots?      
+     (tab-separated: `sample_id<TAB>group_name`)                                
+     - Filter to a specific chromosome, or use all?                             
+     - Want `--group-by-prefix` to auto-group by sample ID prefix?              
+                                                                                
+     **4. Output directory?** I'll default to `output/pca/` unless you          
+     prefer something else.                                                     
+                                                                                
+     Just give me the file path and format, and I'll take it from there —       
+     QC if needed, then PCA with scree plots, PC scatter plots, and density     
+     distributions.                                                             
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_224613_b6cdc2
+
+Session:        20260701_224613_b6cdc2
+Duration:       16s
+Messages:       7 (2 user, 4 tool calls)

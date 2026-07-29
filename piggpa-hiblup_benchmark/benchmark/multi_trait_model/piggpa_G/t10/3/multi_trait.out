@@ -1,0 +1,125 @@
+======================================================================
+  Multi-trait Model Analysis
+  Model: T_i = 1 + sex(F) + season(F) + GA(R[G]) + e
+  Method: REML (scipy.optimize + Cholesky parameterization)
+======================================================================
+
+[1] Reading SNP and sample lists...
+  SNPs: 5556, Samples: 1000
+
+[2] Reading genotype data (pandas_plink)...
+  Genotype matrix: (1000, 5556)
+
+[3] Computing GRM (VanRaden + Su normalization)...
+  GA dim: (1000, 1000), diag mean: 1.000000
+
+[4] Reading phenotype data...
+  Individuals: 1000
+
+[5] Building design matrices...
+  Each trait: y(1000,), X(1000,5)
+
+[6] Eigenvalue decomposition and data transformation...
+  y_tilde: (3000,), X_tilde: (3000, 15)
+
+[7] Verifying LogL at HIBLUP's parameters...
+  LogL at HIBLUP params: -6262.97
+  HIBLUP reported LogL: ~-6264.39 (iter 4) to -6266.47 (iter 20)
+
+[8] REML optimization (scipy.optimize.minimize + Cholesky)...
+  Initial LogL: -6874.99
+  [L-BFGS-B] 1	-6364.02	43.45131	47.08902	81.28592	79.95295	3.25512	3.79802	
+  [L-BFGS-B] 2	-6341.45	58.19207	66.21968	80.02351	71.14709	3.00602	3.37918	
+  [L-BFGS-B] 3	-6319.71	53.51088	58.87118	80.35177	74.16955	3.00181	3.53757	
+  [L-BFGS-B] 4	-6301.72	51.16107	52.59328	79.98881	73.30466	2.85597	3.58561	
+  [L-BFGS-B] 5	-6289.63	51.19955	53.95954	79.48504	73.25485	2.65071	3.74564	
+  [L-BFGS-B] 10	-6269.11	37.53955	69.50235	74.21851	82.17119	1.25238	4.86681	
+  [L-BFGS-B] 20	-6263.50	35.87568	80.72491	77.21343	94.30162	1.20497	5.30943	
+  [L-BFGS-B] 30	-6263.31	33.80385	81.86936	73.97417	95.84239	1.17444	5.30220	
+  [L-BFGS-B] 40	-6262.92	29.88822	84.87136	63.61364	103.83587	0.98347	5.46762	
+  [L-BFGS-B] 50	-6262.91	29.87815	85.17579	64.30318	103.69040	0.96813	5.49495	
+  [L-BFGS-B] 60	-6262.88	29.66251	85.24283	63.11644	104.49964	0.92751	5.53193	
+  [L-BFGS-B] 70	-6262.87	29.67261	85.41533	63.74456	104.26328	0.94253	5.52815	
+  [L-BFGS-B] 80	-6262.87	29.71414	85.34109	63.79073	104.16239	0.94456	5.52438	
+  [L-BFGS-B] 90	-6262.87	29.70946	85.30537	63.70707	104.18295	0.94426	5.52372	
+  [L-BFGS-B] 100	-6262.87	29.47928	85.50765	63.37650	104.46747	0.93037	5.53700	
+  [L-BFGS-B] 110	-6262.87	29.51631	85.57239	63.52666	104.49218	0.93312	5.53756	
+  [L-BFGS-B] 120	-6262.87	29.74186	85.38543	63.83782	104.22219	0.93279	5.53933	
+  [L-BFGS-B] 130	-6262.87	29.73648	85.33870	63.96389	104.04223	0.93606	5.53344	
+  [L-BFGS-B] 140	-6262.87	29.65127	85.43633	63.84134	104.16340	0.93853	5.53148	
+  [L-BFGS-B] 150	-6262.87	29.70258	85.41731	63.96955	104.10020	0.93744	5.53394	
+  [L-BFGS-B] 160	-6262.87	29.66477	85.44446	63.85478	104.19320	0.93767	5.53383	
+  [L-BFGS-B] 170	-6262.87	29.61330	85.50788	63.78994	104.26534	0.93519	5.53664	
+  [L-BFGS-B] 180	-6262.87	29.62351	85.46301	63.75154	104.24977	0.93404	5.53651	
+
+  L-BFGS-B result: success=True, msg=CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH
+  LogL: -6262.87
+  T1: V(GA)=29.6131, V(e)=85.4595, h2=0.2573
+  T2: V(GA)=63.7433, V(e)=104.2387, h2=0.3795
+  T3: V(GA)=0.9336, V(e)=5.5362, h2=0.1443
+
+[9] Computing AI matrix for standard errors...
+  Final LogL: -6262.87
+  Score norm: 0.286706
+
+  Parameter SE verification:
+  T1_GA: idx=0, SE=7.6956
+  T1_e:  idx=6, SE=7.6634
+  T2_GA: idx=3, SE=12.3056
+  T2_e:  idx=9, SE=10.9594
+  T3_GA: idx=5, SE=0.4156
+  T3_e:  idx=11, SE=0.4555
+
+[10] Computing heritability SE...
+
+  Variance component estimates:
+  T1: V(GA)=29.6131, V(e)=85.4595, h2=0.2573 +/- 0.0638
+  T2: V(GA)=63.7433, V(e)=104.2387, h2=0.3795 +/- 0.0666
+  T3: V(GA)=0.9336, V(e)=5.5362, h2=0.1443 +/- 0.0632
+
+  Genetic correlations:
+  T1-T2: r_g=0.9873
+  T1-T3: r_g=0.9243
+  T2-T3: r_g=0.9732
+
+[11] Estimating fixed effects and random effects...
+  T1:
+    mu: 195.35 +/- 0.733126
+    sex_M: 5.49388 +/- 0.666238
+    season_Spring: 3.36254 +/- 0.928648
+    season_Summer: 10.2293 +/- 0.913802
+    season_Winter: -5.79171 +/- 0.977398
+  T2:
+    mu: 209.23 +/- 0.865808
+    sex_M: 8.28008 +/- 0.79638
+    season_Spring: 9.70119 +/- 1.10654
+    season_Summer: 22.0394 +/- 1.08959
+    season_Winter: -3.68822 +/- 1.16899
+  T3:
+    mu: 28.9547 +/- 0.177444
+    sex_M: -1.04298 +/- 0.159577
+    season_Spring: 1.02959 +/- 0.223048
+    season_Summer: 4.31549 +/- 0.219363
+    season_Winter: -2.02989 +/- 0.233993
+
+[12] ANOVA...
+  T1: sex SS=7535.08, season SS=32208.26
+  T2: sex SS=17151.80, season SS=98249.90
+  T3: sex SS=267.69, season SS=5207.15
+
+[13] Saving output files...
+
+  Results saved to: /public/share/likui/hanyu/testdata/In-silico-data/t10/3
+
+[14] Generating visualization plots...
+  Saved: variance_components.pdf
+  Saved: heritability.pdf
+  Saved: genetic_correlation.pdf
+  Saved: residual_correlation.pdf
+  Saved: beta_forest.pdf
+  Saved: random_effects_distribution.pdf
+  Saved: anova_sumSq.pdf
+
+======================================================================
+  Analysis complete!
+======================================================================

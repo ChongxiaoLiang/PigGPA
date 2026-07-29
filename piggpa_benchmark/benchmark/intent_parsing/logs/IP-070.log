@@ -1,0 +1,103 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_232048_32db09  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Annotate my GWAS hits
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     pig-annotation-track  0.1s
+  │ 📚 skill     piggpa-agent  0.1s
+  │ 🔎 find      *.assoc*  2.4s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the pig-annotation-track skill and searched for GWAS           
+     results in your workspace. Here's what I found:                            
+                                                                                
+     **Your GWAS files available for annotation:**                              
+                                                                                
+     | File Path | Description |                                                
+     |-----------|-------------|                                                
+     | `bf_plink_gwas.assoc.linear` | Benchmark workflow GWAS results |         
+     | `plink_gwas_results.assoc.linear` | piggpa-G test results |              
+     | `pig_gwas_pca.assoc.linear` | Case study with PCA covariates |           
+     | `pig_gwas.assoc.linear` (3 copies) | Multiple timing/benchmark runs      
+     |                                                                          
+     | `test_linear.assoc.linear` / `firstrun.assoc.linear` | Test runs |       
+                                                                                
+     **To annotate your GWAS hits, I need a couple things from you:**           
+                                                                                
+     1. **Which GWAS file** should I use? (pick one from above, e.g.,           
+     `pig_gwas_pca.assoc.linear`)                                               
+                                                                                
+     2. **Which hits to annotate?** I can either:                               
+        - Let me auto-detect significant SNPs (e.g., P < 5e-8 or top N          
+     hits) from the file                                                        
+        - Or you can give me specific SNPs/regions you're interested in         
+                                                                                
+     3. **What format?** The annotation track tool generates a 3-layer PDF      
+     showing:                                                                   
+        - **Gene models** (exons/introns/direction) for the region around       
+     each SNP                                                                   
+        - **ChromHMM regulatory states** across 14 pig tissues (15              
+     chromatin states)                                                          
+        - **Expression heatmaps** (34 tissues, protein-coding and lncRNA)       
+                                                                                
+     **Example of what I'd produce for each hit:**                              
+     ```                                                                        
+     chr6:50001000 → output/chr6_50001000_annotation.pdf                        
+     ```                                                                        
+     A 3-track aligned plot with the SNP marked by a red dashed line,           
+     showing which genes are nearby, what regulatory states are active in       
+     different tissues, and how those genes are expressed.                      
+                                                                                
+     **Which GWAS file should I work with, and do you want me to                
+     auto-detect significant hits or do you have specific SNPs in mind?**       
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_232048_32db09
+
+Session:        20260701_232048_32db09
+Duration:       22s
+Messages:       7 (2 user, 4 tool calls)

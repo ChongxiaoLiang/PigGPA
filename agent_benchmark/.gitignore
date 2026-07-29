@@ -1,0 +1,19 @@
+# Large genotype binary files intentionally excluded from this archive
+# (documented in README.md — available on request)
+# NOTE: do NOT use a bare *.bed glob — small interval-track .bed files
+# (lmd_lead_snps.bed, lmd_loci.bed) ARE included and must be tracked.
+lmd.phe.bed
+lmd.phe_qc.bed
+lmd.qc.bed
+*.bim
+*.grm.bin
+*.grm.N.bin
+*.nosex
+
+# Derived large files (regenerable from the included .assoc.linear / .mlma)
+lmd.gwas_with_features.txt
+lmd.freq.frq
+
+# Python caches
+__pycache__/
+*.pyc

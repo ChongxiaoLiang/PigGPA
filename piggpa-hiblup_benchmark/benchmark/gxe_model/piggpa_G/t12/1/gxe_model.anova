@@ -1,0 +1,4 @@
+Factors	Df	SumSq	MeanSq	F	Pr(>F)
+Temp	1	77211.9	77211.9	608.877	0
+Humidity	1	35442.7	35442.7	279.494	0
+e	997	126430	126.81	.	.

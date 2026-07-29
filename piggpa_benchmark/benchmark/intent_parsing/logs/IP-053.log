@@ -1,0 +1,121 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_225938_cd53fb  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Run 6 genomic selection models
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     genomic-selection  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     ## Genomic Selection: 6-Model Comparison                                   
+                                                                                
+     I've loaded the `genomic-selection` skill. Here's what it does and         
+     what I need from you.                                                      
+                                                                                
+     ---                                                                        
+                                                                                
+     ### What the Pipeline Runs                                                 
+                                                                                
+     6 models compared via K-fold cross-validation:                             
+                                                                                
+     | Model | Type | Best For |                                                
+     |-------|------|----------|                                                
+     | **BayesA** | SNP-specific variances | Traits with major genes |          
+     | **BayesB** | Variable selection (point mass at zero) | Sparse            
+     genetic architecture |                                                     
+     | **BayesC** | Mixture prior | Automatic variable selection |              
+     | **BRR** | Bayesian Ridge Regression | Homogeneous SNP effects |          
+     | **BL** | Bayesian LASSO | Compromise: shrinkage + selection |            
+     | **GBLUP** | Genomic BLUP | Polygenic traits, fastest |                   
+                                                                                
+     Each model is evaluated by mean Pearson correlation (r), RMSE, and MAE     
+     across folds, then ranked by a weighted composite score. Outputs           
+     include comparison tables, bar charts, and bilingual summary reports       
+     (English + Chinese).                                                       
+                                                                                
+     ---                                                                        
+                                                                                
+     ### What I Need From You                                                   
+                                                                                
+     The pipeline requires a **PLINK binary genotype dataset**                  
+     (.bed/.bim/.fam) with phenotypes embedded in the .fam file.                
+     Specifically:                                                              
+                                                                                
+     1. **Genotype data prefix** — e.g., `/path/to/your_plink_data` (for        
+     `your_plink_data.bed`/`.bim`/`.fam`)                                       
+     2. **Optional: GWAS results** — if you want to pre-filter SNPs by          
+     p-value before model comparison                                            
+     3. **Parameters** (or I can use defaults):                                 
+        - `--folds`: number of CV folds (default 10)                            
+        - `--seed`: random seed (default 123)                                   
+        - `--bglr_iter`: MCMC iterations for Bayesian models (default 1000)     
+        - `--bglr_burnin`: burn-in (default 500)                                
+                                                                                
+     ---                                                                        
+                                                                                
+     ### Time Warning                                                           
+                                                                                
+     This is computationally intensive. Bayesian methods                        
+     (BayesA/B/C/BRR/BL) use MCMC and are much slower than GBLUP. For a         
+     typical dataset:                                                           
+     - **GBLUP**: seconds to minutes per fold                                   
+     - **Bayesian**: 10-60+ minutes per fold each                               
+     - **Full 10-fold × 6 models**: possibly several hours                      
+                                                                                
+     If you want a quicker exploratory run, I can reduce folds to 5 or MCMC     
+     iterations to 500.                                                         
+                                                                                
+     ---                                                                        
+                                                                                
+     **Please provide your PLINK genotype data path and any preferences on      
+     parameters, and I'll run the full pipeline.**                              
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_225938_cd53fb
+
+Session:        20260701_225938_cd53fb
+Duration:       19s
+Messages:       5 (2 user, 2 tool calls)

@@ -1,0 +1,77 @@
+======================================================================
+  GxE Model Analysis
+  Model: Trait = 1 + Temp(C) + Humidity(C) + Temp:GA.GA(R[GxE]) + Humidity:GA.GA(R[GxE]) + GA(R[G]) + e
+  Method: REML (scipy.optimize + log parameterization)
+  GRM: VanRaden + Su normalization
+  GxE GRM: Hadamard product G*E
+======================================================================
+
+[1] Reading SNP and sample lists...
+  SNPs: 5556, Samples: 1000
+
+[2] Reading genotype data (pandas_plink)...
+  Genotype matrix: (1000, 5556)
+
+[3] Computing GRM (VanRaden + Su normalization)...
+  GA dim: (1000, 1000), diag mean: 1.000000
+
+[4] Reading phenotype data...
+  Individuals: 1000
+  y: (1000,), X: (1000, 3)
+
+[5] Building GxE relationship matrices (Hadamard product G*E)...
+  GxE_temp diag mean: 0.998915
+  GxE_hum diag mean: 0.999989
+
+[6] Eigenvalue decomposition for all relationship matrices...
+  GxE_temp eigenvalues: min=-0.0000, max=5.9268
+  GxE_hum eigenvalues: min=-0.0000, max=5.1928
+  GA eigenvalues: min=-0.0000, max=4.1957
+
+[7] REML optimization using scipy.optimize...
+  Using shared eigenvectors approach (U from GA)...
+  Initial LogL: -3212.31
+  [L-BFGS-B] 1	-3172.48	V(GxT)=23.06423	V(GxH)=23.08926	V(GA)=63.44967	V(e)=74.32846
+  [L-BFGS-B] 2	-3167.30	V(GxT)=24.23660	V(GxH)=24.29504	V(GA)=73.41175	V(e)=90.12249
+  [L-BFGS-B] 3	-3167.21	V(GxT)=24.11772	V(GxH)=24.20941	V(GA)=74.80901	V(e)=88.80490
+  [L-BFGS-B] 4	-3166.88	V(GxT)=23.02534	V(GxH)=23.50512	V(GA)=88.37458	V(e)=80.30074
+  [L-BFGS-B] 5	-3166.87	V(GxT)=22.89346	V(GxH)=23.53594	V(GA)=86.35588	V(e)=80.97661
+  [L-BFGS-B] 10	-3166.78	V(GxT)=11.86790	V(GxH)=21.53576	V(GA)=89.87931	V(e)=92.58833
+  [L-BFGS-B] 20	-3166.63	V(GxT)=0.99529	V(GxH)=14.36189	V(GA)=86.33150	V(e)=112.19887
+  [L-BFGS-B] 30	-3166.60	V(GxT)=0.00030	V(GxH)=3.26037	V(GA)=86.90738	V(e)=123.53007
+  [L-BFGS-B] 40	-3166.60	V(GxT)=0.00000	V(GxH)=0.32967	V(GA)=86.81715	V(e)=126.59333
+  [L-BFGS-B] 50	-3166.60	V(GxT)=0.00000	V(GxH)=0.03282	V(GA)=86.82003	V(e)=126.81359
+
+  L-BFGS-B result: success=True, msg=CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH
+  LogL: -3166.60
+  V(Temp:GA.GA)=0.000000
+  V(Humidity:GA.GA)=0.031919
+  V(GA)=86.816346
+  V(e)=126.826365
+
+  LogL at HIBLUP params: -3203.03
+  HIBLUP reported LogL: ~-3203.19
+
+[8] Computing AI matrix for standard errors...
+  Variance component SEs:
+  Temp:GA.GA: Var=0.0000, SE=149.7746, h2=0.0000, h2_SE=0.7009
+  Humidity:GA.GA: Var=0.0319, SE=150.8814, h2=0.0001, h2_SE=0.7061
+  GA: Var=86.8163, SE=15.6845, h2=0.4063, h2_SE=0.0658
+  e: Var=126.8264, SE=221.5757, h2=0.5935, h2_SE=1.0381
+
+[9] Estimating fixed effects and random effects...
+  mu: 9.85536 +/- 3.82077
+  Temp: 1.99969 +/- 0.101259
+  Humidity: 0.507418 +/- 0.0373962
+
+[10] ANOVA...
+  Temp: SS=77211.90, F=608.80
+  Humidity: SS=35442.73, F=279.46
+
+[11] Saving output files...
+
+  Results saved to: /public/share/likui/hanyu/testdata/In-silico-data/t12/1
+
+======================================================================
+  Analysis complete!
+======================================================================

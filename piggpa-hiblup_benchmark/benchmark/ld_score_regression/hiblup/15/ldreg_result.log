@@ -1,0 +1,44 @@
+﻿#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Sat Jul 11 22:13:05 2026
+Hostname: ln03
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --ldreg \
+  --sumstat sumstat_hiblup.txt \
+  --lds /public/share/likui/hanyu/testresult/HIBLUP/14/ldscore_result.ldsc \
+  --thread 4 \
+  --out ldreg_result 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [ldreg_result.log].
+
+Loading LD score ...
+5556 LD scores are detected in file [/public/share/likui/hanyu/testresult/HIBLUP/14/ldscore_result.ldsc].
+Loading GWAS summary statistics file ...
+5556 markers are detected in file [sumstat_hiblup.txt].
+
+Total 5556 shared markers will be used in analysis.
+
+Start to run LD score regression ...
+
+Heritability estimation ...
+Using M = 5516
+Using two-step estimator with cutoff at 30
+Trait in analysis: [sumstat_hiblup]
+The lambda GC is 1.13537
+Mean Chi^2 is 1.14762
+
+Summary of estimated heritability (h2):
+                      Intercept Intercept_SE     h2  h2_SE h2_Pr(Chisq)
+ sumstat_hiblup   -0.6887       1.3870 9.4469 0.1127       <2e-16
+Results of estimated heritability have been saved in the file [ldreg_result.ldsr.h2].
+
+Analysis finished: Sat Jul 11 22:13:05 2026
+Total running time: 0h0m0s

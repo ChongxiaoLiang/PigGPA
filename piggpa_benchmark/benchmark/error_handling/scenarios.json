@@ -1,0 +1,86 @@
+{
+  "benchmark": "PigGPA error_handling",
+  "version": "1.0",
+  "date_designed": "2026-06-30",
+  "designer": "academic-paper pipeline + manual curation",
+  "description": "5 error scenarios for evaluating PigGPA's ability to gracefully handle anomalous inputs. Each scenario tests a distinct failure mode.",
+  "run_status": "completed",
+  "run_status_note": "Real run via `piggpa chat -q` on 2026-07-01, model deepseek-v4-pro, --max-turns 2 --yolo. Per-scenario logs in logs/ERR-XXX.log; aggregated results in error_handling_results.json.",
+  "scenarios": [
+    {
+      "id": "ERR-001",
+      "description": "Missing required parameter (genotype file)",
+      "test_type": "missing_input",
+      "query": "Run GWAS analysis",
+      "expected_behavior": "PigGPA should detect missing genotype input and prompt user for required file path. Should not attempt to invoke any sub-skill without required parameters.",
+      "pass_criteria": [
+        "Detects missing --genotype_prefix / --bfile",
+        "Asks user for required input",
+        "Does not invoke plink-gwas / gcta-gwas without input",
+        "Provides graceful response within 10s"
+      ]
+    },
+    {
+      "id": "ERR-002",
+      "description": "Invalid parameter value (MAF > 0.5)",
+      "test_type": "invalid_param",
+      "query": "Run GWAS with MAF threshold of 0.8",
+      "expected_behavior": "PigGPA should detect MAF=0.8 is invalid (must be in [0, 0.5]) and either auto-correct to 0.05 with confirmation, or ask user to provide a valid MAF.",
+      "pass_criteria": [
+        "Detects MAF=0.8 violates [0, 0.5] range",
+        "Either auto-corrects with user confirmation or prompts for valid MAF",
+        "Does not invoke plink with --maf 0.8",
+        "Logs the validation failure to conversation state"
+      ]
+    },
+    {
+      "id": "ERR-003",
+      "description": "Ambiguous request without clear intent",
+      "test_type": "ambiguous_intent",
+      "query": "Do some analysis on my data",
+      "expected_behavior": "PigGPA should ask user to clarify analysis goal (GWAS / QC / heritability / population structure / genomic selection).",
+      "pass_criteria": [
+        "Detects ambiguity",
+        "Lists available analysis options",
+        "Does not invoke any sub-skill",
+        "Sets conversation state to 'intent_detection' with user_note"
+      ]
+    },
+    {
+      "id": "ERR-004",
+      "description": "Non-existent file path",
+      "test_type": "invalid_path",
+      "query": "Run QC on /nonexistent/path/data",
+      "expected_behavior": "PigGPA should detect file path does not exist before invoking PLINK and inform user.",
+      "pass_criteria": [
+        "Detects path does not exist (file_exists check)",
+        "Reports error with clear message",
+        "Does not invoke PLINK with non-existent path",
+        "Suggests checking path or running ls to verify"
+      ]
+    },
+    {
+      "id": "ERR-005",
+      "description": "Incompatible downstream parameters",
+      "test_type": "incompatible_params",
+      "query": "Run GWAS and then genomic selection with incompatible trait",
+      "expected_behavior": "PigGPA should detect that the trait specified for genomic selection does not match the trait used in upstream GWAS, and prompt user to confirm trait alignment.",
+      "pass_criteria": [
+        "Detects trait mismatch between GWAS and genomic selection steps",
+        "Asks user to confirm trait alignment",
+        "Does not invoke genomic-selection with mismatched trait",
+        "Maintains session state across the multi-step workflow"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "by_test_type": {
+      "missing_input": 1,
+      "invalid_param": 1,
+      "ambiguous_intent": 1,
+      "invalid_path": 1,
+      "incompatible_params": 1
+    }
+  }
+}

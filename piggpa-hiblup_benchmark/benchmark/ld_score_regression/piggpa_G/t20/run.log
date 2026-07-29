@@ -1,0 +1,58 @@
+======================================================================
+GWAS Summary Statistics Generation
+Sample range: 1001-2000
+Chromosome: 1
+======================================================================
+
+[1/5] Reading PLINK files...
+  Total samples: 10000
+  Total SNPs: 100000
+
+[2/5] Filtering chromosome 1 SNPs...
+  Chromosome 1 SNPs: 5556
+
+[3/5] Extracting genotype data (samples 1001-2000)...
+  Samples: 1000, SNPs: 5556
+
+[4/5] Loading phenotype data...
+  Phenotypes: 1000
+  Phenotype mean: 0.0094
+  Phenotype std: 1.0178
+
+[5/5] Performing GWAS analysis...
+  Performing GWAS: 5556 SNPs, 1000 samples
+    Processing 1000/5556 SNPs...
+    Processing 2000/5556 SNPs...
+    Processing 3000/5556 SNPs...
+    Processing 4000/5556 SNPs...
+    Processing 5000/5556 SNPs...
+
+  GWAS results:
+    Significant SNPs (p<0.05): 0
+    Significant SNPs (p<0.01): 0
+    Significant SNPs (Bonferroni): 0
+    Effect range: [-0.2697, 0.3152]
+    Effect mean: -0.000324
+
+[6/5] Generating visualizations...
+  Plotting Manhattan plot...
+    Manhattan plot saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/manhattan_plot.pdf
+  Plotting QQ plot...
+    QQ plot saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/qq_plot.pdf
+  Plotting effect distribution...
+    Effect distribution saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/effect_distribution.pdf
+
+[7/5] Saving results...
+  Summary statistics saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/sumstat.csv
+  Summary saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/gwas_summary.txt
+
+======================================================================
+GWAS Summary Statistics Generation Complete!
+======================================================================
+
+Output files:
+  1. sumstat.csv - GWAS summary statistics (SNP, effect, p-value, N)
+  2. gwas_summary.txt - Analysis summary
+  3. manhattan_plot.pdf - Manhattan plot
+  4. qq_plot.pdf - QQ plot
+  5. effect_distribution.pdf - Effect distribution

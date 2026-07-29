@@ -1,0 +1,21 @@
+LD Score Regression Summary
+============================================================
+
+Sample size: 1000
+Number of SNPs: 5556
+
+Results:
+----------------------------------------
+  Item: Heritability (h²)
+    Estimate: 10.6357
+    SE: 4.9645
+    P-value: 1.53e-02
+
+  Item: Intercept
+    Estimate: -1.0437
+    SE: 1.0231
+
+Interpretation:
+----------------------------------------
+  High heritability - trait is strongly influenced by genetics
+  Intercept close to 1 - minimal confounding

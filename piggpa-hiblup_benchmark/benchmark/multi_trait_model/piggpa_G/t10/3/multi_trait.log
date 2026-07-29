@@ -1,0 +1,29 @@
+Multi-trait Model Analysis Log
+==================================================
+Model: T_i = 1 + sex(F) + season(F) + GA(R[G]) + e
+Method: REML (scipy.optimize L-BFGS-B + Cholesky parameterization)
+GRM: VanRaden + Su normalization
+SNPs: 5556, Samples: 1000, Traits: 3
+
+Final LogL: -6262.869017
+
+Variance components:
+  T1_GA: 29.613150
+  T1_e:  85.459519
+  T1_h2: 0.257343
+  T2_GA: 63.743292
+  T2_e:  104.238750
+  T2_h2: 0.379465
+  T3_GA: 0.933563
+  T3_e:  5.536168
+  T3_h2: 0.144297
+
+Covariance components (genetic):
+  T1:T2_GA: 42.893900
+  T1:T3_GA: 4.859929
+  T2:T3_GA: 7.507582
+
+Covariance components (residual):
+  T1:T2_e: 73.941687
+  T1:T3_e: 16.501479
+  T2:T3_e: 15.682987

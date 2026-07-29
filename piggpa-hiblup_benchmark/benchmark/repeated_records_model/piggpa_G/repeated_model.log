@@ -1,0 +1,43 @@
+#=============================================================#
+#                    REPEATED RECORDS MODEL                    #
+#=============================================================#
+
+Model:
+  weight = 1 + sex(F) + season(F) + ID(R[E]) + GA(R[G]) + e
+
+Method: AI-REML (Woodbury identity)
+GRM: VanRaden method, 5556 markers, 1000 individuals
+
+Total 3000 records will be predicted.
+Total 3 variance components need to be estimated.
+Variance components estimation using: AI(20)
+The matrix V has a dimension of 3000 x 3000.
+Running ...
+Alg.	Iter.	LogL.	V(ID)	V(GA)	V(e)
+[AI]	1	-9811.61	86.09863	15.43517	13.64680
+[AI]	2	-9793.52	85.74239	19.05734	14.11029
+[AI]	3	-9792.57	85.51783	19.49778	14.12657
+[AI]	4	-9792.57	85.50363	19.51615	14.12659
+[AI]	5	-9792.57	85.50305	19.51684	14.12659
+[AI]	6	-9792.57	85.50303	19.51687	14.12659
+[AI]	7	-9792.57	85.50303	19.51687	14.12659
+[AI]	8	-9792.57	85.50303	19.51687	14.12659
+[AI]	9	-9792.57	85.50303	19.51687	14.12659
+[Converged?] Yes!
+
+Summary of estimated variances and heritability:
+        Var Var_SE     h2  h2_SE h2_Pr(Chisq)
+ ID 85.5030 6.4694 0.7176 0.0485 3.51987e-40
+ GA 19.5169 6.0745 0.1638 0.0491 0.000657018
+  e 14.1266 0.4467 0.1186 0.0061 8.97916e-220
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients:
+        Levels Estimation     SE
+               mu   197.1587 0.7270
+            sex_M     5.2297 0.6570
+    season_Spring     3.9795 0.9149
+    season_Summer    10.7014 0.9003
+    season_Winter    -5.2596 0.9658
+
+Analysis finished.

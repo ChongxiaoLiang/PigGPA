@@ -1,0 +1,137 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_230454_5e8abf  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: LD pruning
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     ld-pruning  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     Now let me provide you with a summary of the LD Pruning skill and how      
+     to use it.                                                                 
+                                                                                
+     ---                                                                        
+                                                                                
+     ## LD Pruning (ld-pruning)                                                 
+                                                                                
+     Performs LD-based SNP pruning using PLINK's `--indep-pairwise` method      
+     to obtain a set of approximately independent SNPs. This is essential       
+     preprocessing for PCA, ADMIXTURE, and other analyses that assume           
+     independent markers.                                                       
+                                                                                
+     ### Script Location                                                        
+                                                                                
+     ```                                                                        
+     /workspace/pigbole/.piggpa/skills/piggpa-G/ld-pruning/scripts/ld_prune     
+     .sh                                                                        
+     ```                                                                        
+                                                                                
+     ### Basic Usage                                                            
+                                                                                
+     ```bash                                                                    
+     conda activate piggpa                                                      
+                                                                                
+     bash                                                                       
+     /workspace/pigbole/.piggpa/skills/piggpa-G/ld-pruning/scripts/ld_prune     
+     .sh \                                                                      
+       --bfile <input_prefix> \                                                 
+       --out <output_prefix> \                                                  
+       [--indep-pairwise "50 5 0.2"]                                            
+     ```                                                                        
+                                                                                
+     ### Key Parameters                                                         
+                                                                                
+     | Parameter | Required | Default | Description |                           
+     |-----------|----------|---------|-------------|                           
+     | `--bfile` | Yes | — | Input PLINK binary prefix (.bed/.bim/.fam) |       
+     | `--out` | Yes | — | Output prefix for all results |                      
+     | `--indep-pairwise` | No | `50 5 0.2` | Three values: `window step        
+     r2_threshold` |                                                            
+                                                                                
+     ### Common Parameter Combinations                                          
+                                                                                
+     | Use Case | Parameters | Rationale |                                      
+     |----------|-----------|-----------|                                       
+     | PCA / ADMIXTURE | `50 5 0.2` | Strict — independent SNPs (default) |     
+     | GWAS preprocessing | `100 50 0.1` | Very strict — minimal redundancy     
+     |                                                                          
+     | General moderate | `50 5 0.5` | Balances info loss vs independence |     
+     | Lenient | `1000kb 100 0.8` | Removes only very high LD pairs |           
+                                                                                
+     ### Output Files                                                           
+                                                                                
+     1. **`{out}.prune.in`** — SNPs retained (one per line)                     
+     2. **`{out}.prune.out`** — SNPs removed (one per line)                     
+     3. **`{out}_pruned.bed`** / **`.bim`** / **`.fam`** — Pruned PLINK         
+     binary dataset                                                             
+                                                                                
+     ### Process                                                                
+                                                                                
+     1. Identifies which SNPs to keep/remove based on the sliding window +      
+     r² threshold                                                               
+     2. Extracts the pruned SNP set into a new PLINK binary dataset             
+                                                                                
+     ### ⚠️ Important Notes                                                     
+                                                                                
+     - **Time**: For datasets with >500K SNPs, expect 10–60+ minutes.           
+     Larger window sizes (e.g., `1000kb`) are significantly slower than         
+     SNP-count windows (e.g., `50`).                                            
+     - **Memory**: 45 GB allocated for PLINK operations.                        
+     - **Tip**: Use a stricter r² with smaller window for initial               
+     exploratory runs, then refine.                                             
+                                                                                
+     ---                                                                        
+                                                                                
+     What would you like to do? If you have a PLINK binary dataset ready,       
+     let me know the prefix path and your desired pruning parameters (or I      
+     can use the defaults `50 5 0.2`).                                          
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_230454_5e8abf
+
+Session:        20260701_230454_5e8abf
+Duration:       19s
+Messages:       5 (2 user, 2 tool calls)

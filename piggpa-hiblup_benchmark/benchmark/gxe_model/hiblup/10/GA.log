@@ -1,0 +1,36 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Fri Apr 03 10:42:12 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --make-xrm \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --add \
+  --thread 4 \
+  --float-prec \
+  --out GA 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [GA.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+Writing GA matrix into file ... 
+1000 individuals has been saved in the file [GA.GA.bin, GA.GA.id].
+
+Analysis finished: Fri Apr 03 10:42:13 2026
+Total running time: 0h0m1s

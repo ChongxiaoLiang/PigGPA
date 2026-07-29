@@ -1,0 +1,215 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_224441_12825c  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Compare GREML vs LD score regression heritability
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     heritability-analysis  0.0s
+  │ 📚 skill     ld-score  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     ## GREML vs LD Score Regression: Heritability Estimation Methods           
+     Compared                                                                   
+                                                                                
+     I have reviewed the relevant PigGPA skills. Here is a comprehensive        
+     comparison of these two approaches for estimating heritability.            
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 1. Core Models                                                         
+                                                                                
+     **GREML (Genomic REML)** — via GCTA (`heritability-analysis` skill)        
+     - Models individual-level data: `y = Xβ + g + e` where `g ~ N(0,           
+     Gσ²_g)`                                                                    
+     - Builds a GRM (Genomic Relationship Matrix) from all SNP pairs            
+     - Estimates `h² = σ²_g / (σ²_g + σ²_e)` via restricted maximum             
+     likelihood                                                                 
+     - Operates on raw genotype + phenotype data                                
+                                                                                
+     **LD Score Regression (LDSC)** — prerequisite: `ld-score` skill            
+     - Models GWAS summary statistics: `E[χ²_j] = N × h² × l_j / M + 1`         
+     - Where `l_j` is the LD score of SNP *j*, `N` is sample size, `M` is       
+     number of SNPs                                                             
+     - Regresses GWAS χ² statistics onto LD scores — the slope gives h²         
+     - Operates on GWAS summary statistics + LD scores from a reference         
+     panel                                                                      
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 2. Key Differences at a Glance                                         
+                                                                                
+     | Feature | GREML (GCTA) | LD Score Regression |                           
+     |---|---|---|                                                              
+     | **Data requirement** | Individual-level genotypes + phenotypes |         
+     GWAS summary stats + LD reference |                                        
+     | **Privacy** | Low — needs raw data | High — summary statistics only      
+     |                                                                          
+     | **Sample size scaling** | O(N²×M) — scales poorly | O(M) — scales        
+     well to huge N |                                                           
+     | **Computational cost** | Hours to days for N>10K | Minutes with          
+     pre-computed LD scores |                                                   
+     | **Confounding by stratification** | Can include PCs as fixed effects     
+     | Intercept naturally captures confounding |                               
+     | **What h² captures** | SNP-heritability (tagged by genotyped SNPs) |     
+     Same SNP-heritability |                                                    
+     | **Causal variant assumption** | All SNPs contribute small effects |      
+     ALL SNPs contribute (polygenic) |                                          
+     | **Standard error** | SE ≈ 1/√(2N) | Larger SE than GREML for same N      
+     |                                                                          
+     | **Negative estimates** | Yes — sampling variation | Yes — sampling       
+     variation |                                                                
+     | **Meta-analysis friendly** | No — needs pooled raw data | Yes —          
+     combines summary stats across cohorts |                                    
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 3. Method Strengths                                                    
+                                                                                
+     **GREML Strengths:**                                                       
+     - Higher precision (smaller SE) for a given sample size                    
+     - Direct variance component estimation — no regression slope               
+     interpretation                                                             
+     - Handles family/pedigree structure naturally in the GRM                   
+     - Can include covariates (sex, batch, PCs) as fixed effects                
+     - Well-understood REML machinery (logL, LRT, P-values for h²>0)            
+                                                                                
+     **LD Score Regression Strengths:**                                         
+     - Only needs GWAS summary statistics — works when raw data cannot be       
+     shared (cross-cohort consortia)                                            
+     - The intercept captures inflation from population stratification,         
+     cryptic relatedness, and other confounds                                   
+     - Can distinguish polygenic signal (slope) from confounding                
+     (intercept)                                                                
+     - Scales trivially to millions of samples — only depends on GWAS N,        
+     not GREML's O(N²)                                                          
+     - Can be run with pre-computed LD scores from a reference panel (e.g.,     
+     1000 Genomes)                                                              
+     - Enables partitioned heritability (enrichment in functional               
+     categories)                                                                
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 4. The LD Score Computation (Prerequisite for LDSC)                    
+                                                                                
+     The `ld-score` skill computes the per-SNP LD score:                        
+     ```                                                                        
+     LD_Score(i) = 1 + Σ r²_ij   (for all j within ±1 Mb on same                
+     chromosome)                                                                
+     ```                                                                        
+     Output: `ld_score_results.csv` with columns: SNP_ID, Chromosome,           
+     Position, MAF, LD_Score                                                    
+                                                                                
+     This is what LDSC uses as the independent variable in the regression.      
+     The ld-score skill also produces diagnostic visualizations:                
+     - **ld_score_distribution** — histogram (right-skewed expected; most       
+     SNPs have low LD scores)                                                   
+     - **ld_score_vs_maf** — scatter + binned bar chart (checks MAF-LD          
+     confounding)                                                               
+                                                                                
+     Note: The current `ld-score` skill computes LD scores but does NOT         
+     include the downstream LDSC regression for h² estimation. That would       
+     require the LDSC software (bulik-sullivan/ldsc) or an equivalent tool.     
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 5. When to Use Which                                                   
+                                                                                
+     | Scenario | Recommended Method |                                          
+     |---|---|                                                                  
+     | Single-cohort study with raw genotypes + phenotypes | **GREML** —        
+     more precise |                                                             
+     | Cross-cohort meta-analysis with summary stats only | **LD SC             
+     Regression** — only option |                                               
+     | Very large sample (N > 50K), raw data available | **LDSC** —             
+     computationally feasible |                                                 
+     | Population stratification is a major concern | **LDSC** — intercept      
+     captures inflation |                                                       
+     | Family-based or related samples | **GREML** — models kinship             
+     directly |                                                                 
+     | Partitioned heritability (functional enrichment) | **LDSC** —            
+     stratified LDSC |                                                          
+     | Small-to-moderate N (200–5000), raw data available | **GREML** —         
+     better precision at low N |                                                
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 6. What PigGPA Currently Supports                                      
+                                                                                
+     | Capability | Available? |                                                
+     |---|---|                                                                  
+     | Full GREML pipeline (GCTA) | Yes — `heritability-analysis` (genotype     
+     + phenotype) |                                                             
+     | Phenotype-only ICC/repeatability | Yes — `heritability-analysis`         
+     (phenotype-only) |                                                         
+     | LD score computation | Yes — `ld-score` (from PLINK data) |              
+     | Full LDSC heritability regression | **Not directly** — the ld-score      
+     skill computes LD scores but does not run the LDSC regression itself |     
+                                                                                
+     ---                                                                        
+                                                                                
+     ### 7. Summary                                                             
+                                                                                
+     GREML and LD Score Regression both estimate SNP-heritability but           
+     answer slightly different questions. GREML asks: "how much phenotypic      
+     variance do the genotyped SNPs collectively explain in my dataset?"        
+     LDSC asks: "how much of the GWAS signal is attributable to true            
+     polygenic effects versus confounding?" They are complementary — GREML      
+     is the gold standard for single-cohort precision, while LDSC is the        
+     workhorse of large-scale consortia where summary statistics are the        
+     common currency. In practice, they typically produce concordant            
+     estimates when both are well-powered.                                      
+                                                                                
+     If you have a specific dataset and want to run either analysis, let me     
+     know the data format, sample size, and whether you have                    
+     individual-level data or just summary statistics, and I can guide you      
+     through the appropriate pipeline.                                          
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_224441_12825c
+
+Session:        20260701_224441_12825c
+Duration:       39s
+Messages:       6 (2 user, 3 tool calls)

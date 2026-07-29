@@ -1,0 +1,128 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_235317_f2baf7  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Bivariate GREML for genetic correlation between BF and LMD
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     heritability-analysis  0.1s
+  │ 📚 skill     multi-trait-model  0.1s
+  │ 📚 skill     gcta-gwas  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've reviewed three relevant PigGPA skills. Here's my assessment for       
+     running a bivariate GREML between BF (Backfat) and LMD (Loin Muscle        
+     Depth):                                                                    
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Matching Skill: multi-trait-model                                       
+                                                                                
+     The **multi-trait-model** skill (under piggpa-G) is purpose-built for      
+     this exact task. It estimates variance components, heritability,           
+     **genetic correlations (r_g)** and residual correlations via a             
+     multivariate linear mixed model with REML and eigendecomposition-based     
+     BLUP.                                                                      
+                                                                                
+     ### What it does                                                           
+     - Fits: `T_i = 1μ + Xβ + Za + e` for each trait, with `Cov(a_i, a_j) =     
+     G × σ_{GA_i, GA_j}`                                                        
+     - Reports: genetic correlation r_g between trait pairs, h² per trait,      
+     variance components, fixed effects, ANOVA                                  
+     - Generates: heatmaps (genetic & residual correlation), heritability       
+     bar charts, variance component plots, forest plots, etc.                   
+                                                                                
+     ### What it needs                                                          
+     | Input | Description |                                                    
+     |-------|-------------|                                                    
+     | `--bfile` | PLINK .bed/.bim/.fam prefix |                                
+     | `--pheno` | TSV phenotype file with columns for BF, LMD, and any         
+     fixed effects (sex, season, etc.) |                                        
+     | `--snp-file` | Text file listing SNP IDs to include in the GRM |         
+     | `--sample-file` | Text file listing sample IDs to include |              
+     | `--trait-names` | e.g. `BF LMD` |                                        
+     | `--fixed-effects` | e.g. `sex season` (optional) |                       
+                                                                                
+     ### Output you'd get                                                       
+     - Genetic correlation (r_g) between BF and LMD, with SE and Wald           
+     p-value                                                                    
+     - Residual correlation (r_e) between BF and LMD                            
+     - Heritability estimates for each trait                                    
+     - Breeding values (GEBVs) per individual for both traits                   
+     - ~7 visualization files in PDF+PNG                                        
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Alternative: Direct GCTA bivariate GREML                                
+                                                                                
+     GCTA itself supports `--reml-bivar` for bivariate variance component       
+     estimation, but this is not wrapped as a standalone PigGPA skill. The      
+     piggpa-G **heritability-analysis** skill only does univariate GREML.       
+     If you prefer the GCTA-native approach, I can run GCTA directly.           
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Next Steps                                                              
+                                                                                
+     Before I proceed, I need to clarify a few things:                          
+                                                                                
+     1. **Which approach?** The multi-trait-model skill (more                   
+     comprehensive, generates visualizations) or direct GCTA bivar              
+     (lightweight)?                                                             
+     2. **Data location:** Where are your PLINK genotype files                  
+     (`.bed/.bim/.fam`), phenotype file, and any SNP/sample list files?         
+     3. **Fixed effects:** Should I include sex, season, batch, or other        
+     covariates?                                                                
+     4. **SNP filtering:** Do you have pre-filtered SNP/sample lists, or        
+     should I use all available SNPs and samples?                               
+                                                                                
+     Please provide these details and I'll run the analysis.                    
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_235317_f2baf7
+
+Session:        20260701_235317_f2baf7
+Duration:       35s
+Messages:       7 (2 user, 4 tool calls)

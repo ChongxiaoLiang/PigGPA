@@ -1,0 +1,23 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Wed Apr 08 14:43:05 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --trans-xrm \
+  --xrm ld_result \
+  --write-txt \
+  --out ld_result_txt 
+
+Program will be running on up to 64 threads.
+The log will be recorded in file [ld_result_txt.log].
+
+Transform XRM from BIN to TXT (square) ...
+(you can add an option '--triangle' to output the triangle (ijk) format.)
+Error: can not open the file [ld_result.id].

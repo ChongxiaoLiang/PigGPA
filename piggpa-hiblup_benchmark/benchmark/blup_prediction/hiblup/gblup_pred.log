@@ -1,0 +1,36 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 14:52:31 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --pred \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --keep pred_samples.txt \
+  --extract chr1_snps.txt \
+  --score gblup_snp_effect.snpeff \
+  --thread 4 \
+  --out gblup_pred 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [gblup_pred.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+Loading SNP effect file ...
+5556 SNPs with additive effects of 1 trait(s) have been loaded in file [gblup_snp_effect.snpeff].
+
+Total 5556 shared markers are used to predict 1000 individuals.
+
+Start prediction for additive effect ...
+The predicted results of 1000 individuals have been saved in file [gblup_pred.bv].
+
+Analysis finished: Thu Apr 02 14:52:31 2026
+Total running time: 0h0m0s

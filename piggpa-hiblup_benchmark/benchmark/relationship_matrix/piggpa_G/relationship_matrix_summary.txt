@@ -1,0 +1,55 @@
+Relationship Matrix Construction Summary
+============================================================
+
+Chromosome: 1
+Total samples: 10000
+Total SNPs: 5556
+MAF threshold: 0.0
+Valid SNPs (VanRaden): 5556
+Valid SNPs (Yang): 5556
+HRM parameters: tau=1.0, omega=0.5
+SSBLUP parameters: lambda_g=0.7
+HIBLUP compatible: enabled (HA=0.95*G_adj+0.05*A, G_adj=0.999*G+0.001*I)
+
+PRM Statistics:
+  Mean: 0.0001
+  Std: 0.0100
+  Range: [0.0000, 1.0000]
+  Diagonal mean: 1.0000
+  Off-diagonal mean: 0.0000
+
+GRM-VanRaden Statistics:
+  Mean: 0.0000
+  Std: 0.0239
+  Range: [-0.0808, 1.2880]
+  Diagonal mean: 1.0001
+  Off-diagonal mean: -0.0001
+
+GRM-Yang Statistics:
+  Mean: 0.0000
+  Std: 0.0234
+  Range: [-0.0769, 1.3071]
+  Diagonal mean: 1.0000
+  Off-diagonal mean: -0.0001
+
+HRM Statistics:
+  Mean: 0.0001
+  Std: 0.0264
+  Range: [-0.0808, 1.7880]
+  Diagonal mean: 1.5001
+  Off-diagonal mean: -0.0001
+
+HRM-SSBLUP Statistics:
+  Mean: 0.0000
+  Std: 0.0182
+  Range: [-0.0565, 1.2016]
+  Diagonal mean: 1.0001
+  Off-diagonal mean: -0.0001
+
+HRM-HIBLUP Statistics:
+  Mean: 0.0000
+  Std: 0.0229
+  Range: [-0.0767, 1.2733]
+  Diagonal mean: 1.0001
+  Off-diagonal mean: -0.0001
+

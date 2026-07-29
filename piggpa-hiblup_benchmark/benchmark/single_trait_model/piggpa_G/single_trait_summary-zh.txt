@@ -1,0 +1,8 @@
+单性状模型分析摘要
+模型: 表型 = mu + HA + e
+V(HA): 0.000000 (SE=0.107374)
+V(e): 1.018681 (SE=0.116741)
+遗传力 (h2): 0.000000 (SE=0.105405)
+mu: -0.00014900965 (SE=0.0319168)
+收敛: True, 迭代4次
+输出: variance_components.pdf/png, breeding_values.pdf/png, variance_pie.pdf/png

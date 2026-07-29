@@ -1,0 +1,40 @@
+PLINK v1.9.0-b.7.11 64-bit (19 Aug 2025)
+Options in effect:
+  --bfile /workspace/pigbole/benchmark/agent_benchmark/ONE2/data/lmd.phe
+  --geno 0.05
+  --hwe 1e-6
+  --maf 0.05
+  --make-bed
+  --memory 45000
+  --mind 0.05
+  --out /workspace/output/genotype-qc/lmd.phe_qc
+
+Hostname: ecm-e3c2
+Working directory: /workspace
+Start time: Wed Jul 22 23:30:15 2026
+
+Random number seed: 1784734215
+63878 MB RAM detected; reserving 45000 MB for main workspace.
+258662 variants loaded from .bim file.
+2797 people (0 males, 0 females, 2797 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to /workspace/output/genotype-qc/lmd.phe_qc.nosex .
+2796 phenotype values loaded from .fam.
+Warning: Ignoring phenotypes of missing-sex samples.  If you don't want those
+phenotypes to be ignored, use the --allow-no-sex flag.
+27 people removed due to missing genotype data (--mind).
+IDs written to /workspace/output/genotype-qc/lmd.phe_qc.irem .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 2770 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate in remaining samples is 0.989388.
+74 variants removed due to missing genotype data (--geno).
+--hwe: 414 variants removed due to Hardy-Weinberg exact test.
+60472 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+197702 variants and 2770 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to /workspace/output/genotype-qc/lmd.phe_qc.bed +
+/workspace/output/genotype-qc/lmd.phe_qc.bim +
+/workspace/output/genotype-qc/lmd.phe_qc.fam ... done.
+
+End time: Wed Jul 22 23:30:15 2026

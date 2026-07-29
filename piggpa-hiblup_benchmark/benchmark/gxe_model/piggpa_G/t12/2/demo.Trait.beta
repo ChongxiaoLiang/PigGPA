@@ -1,0 +1,7 @@
+Factor	Estimation	SE
+Intercept	12.361559	17.947575
+Temp	1.911281	0.639667
+Humidity	0.466252	0.251985
+Temp:Humidity	0.133379	0.899532
+Temp^2	-0.337179	2.733757
+Humidity^2	0.215940	0.382079

@@ -1,0 +1,68 @@
+================================================================================
+GEBV Prediction Analysis Summary
+================================================================================
+
+Analysis date: 2026-07-10
+Prediction samples: 1000
+SNPs used: 5556
+SNP effect file: /public/share/likui/liangcx/bole/bole_benchmark/piggpa-hiblup_benchmark_upload/unified_testdata/snp_effect.snpeff
+
+================================================================================
+1. Analysis Pipeline
+================================================================================
+
+Step 1: Prepare SNP effect file
+  - SNP effects obtained from GBLUP model training
+  - Contains 5556 SNP additive effects
+
+Step 2: Genomic breeding value prediction
+  - GEBV = Sum(SNP genotype x SNP effect)
+
+================================================================================
+2. Predicted Breeding Value Statistics
+================================================================================
+
+Sample count: 1000
+Breeding value mean: 0.3609
+Breeding value std: 0.9157
+Min: -2.7878
+Max: 3.1866
+
+================================================================================
+3. Breeding Value Distribution
+================================================================================
+
+Range                     Count        Percent   
+-----------------------------------------------
+< -1.01                   74           7.4%
+-1.01 ~ -0.10             229          22.9%
+-0.10 ~ 0.82              388          38.8%
+0.82 ~ 1.73               242          24.2%
+> 1.73                    67           6.7%
+
+================================================================================
+4. Output Files
+================================================================================
+
+1. pred_samples.txt: Prediction sample ID list
+2. snp_list.txt: SNP list used for prediction
+3. prediction_result.bv: Predicted genomic breeding values
+   Format: id  add_a1
+4. prediction_result.log: Analysis log
+5. prediction_summary.txt: Analysis summary (English)
+6. prediction_summary-zh.txt: Analysis summary (Chinese)
+7. gebv_gprs_analysis.pdf/png: Visualization
+
+================================================================================
+5. Interpretation
+================================================================================
+
+   - Positive individuals: 658 (65.8%)
+   - Negative individuals: 342 (34.2%)
+   - Negative values indicate below-average genetic potential
+   - Positive values indicate above-average genetic potential
+
+   - High breeding value individuals (>mean+0.5SD): 309
+   - Very high breeding value individuals (>mean+1.5SD): 67
+
+================================================================================

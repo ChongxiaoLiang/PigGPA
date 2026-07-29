@@ -1,0 +1,26 @@
+PLINK v1.9.0-b.7.11 64-bit (19 Aug 2025)
+Options in effect:
+  --allow-no-sex
+  --bfile /workspace/pigbole/benchmark/agent_benchmark/ONE2/data/lmd.phe
+  --freq
+  --out /workspace/pigbole/benchmark/agent_benchmark/ONE2/claudecode/lmd.freq
+
+Hostname: ecm-e3c2
+Working directory: /workspace/pigbole/benchmark/agent_benchmark/ONE2/claudecode
+Start time: Wed Jul 22 23:32:41 2026
+
+Random number seed: 1784734361
+63878 MB RAM detected; reserving 31939 MB for main workspace.
+258662 variants loaded from .bim file.
+2797 people (0 males, 0 females, 2797 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/workspace/pigbole/benchmark/agent_benchmark/ONE2/claudecode/lmd.freq.nosex .
+2796 phenotype values loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 2797 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.988873.
+--freq: Allele frequencies (founders only) written to
+/workspace/pigbole/benchmark/agent_benchmark/ONE2/claudecode/lmd.freq.frq .
+
+End time: Wed Jul 22 23:32:41 2026

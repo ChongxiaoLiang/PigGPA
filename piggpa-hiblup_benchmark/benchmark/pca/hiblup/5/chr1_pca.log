@@ -1,0 +1,42 @@
+﻿#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 10:33:44 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --pca \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --keep /public/share/likui/hanyu/testdata/In-silico-data/keep_1000_samples.txt \
+  --extract /public/share/likui/hanyu/testdata/In-silico-data/chr1_snps.txt \
+  --npc 10 \
+  --out chr1_pca 
+
+Program will be running on up to 64 threads.
+The log will be recorded in file [chr1_pca.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Principal Components analysis ...
+10 PCs have been calculated successfully.
+Overview of the importance for the top PCs:
+                           PC1    PC2    PC3    PC4    PC5
+     Standard deviation 1.4473 1.4452 1.4374 1.4354 1.4336
+ Proportion of Variance 0.0021 0.0021 0.0021 0.0021 0.0021
+  Cumulative Proportion 0.0021 0.0042 0.0062 0.0083 0.0104
+The Principle Components have been saved in file [chr1_pca.pc].
+The Proportion and Cumulative Proportion of variance can be found in file [chr1_pca.pcp].
+
+Analysis finished: Thu Apr 02 10:33:45 2026
+Total running time: 0h0m1s

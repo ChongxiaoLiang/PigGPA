@@ -1,0 +1,37 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 09 11:21:49 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --rc \
+  --ibc \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --keep /public/share/likui/hanyu/testresult/HIBLUP/4/1/keep_samples.txt \
+  --extract /public/share/likui/hanyu/testresult/HIBLUP/4/1/chr1_snps.txt \
+  --add \
+  --out /public/share/likui/hanyu/testresult/HIBLUP/4/1/chr1_1000 
+
+Program will be running on up to 64 threads.
+The log will be recorded in file [/public/share/likui/hanyu/testresult/HIBLUP/4/1/chr1_1000.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+Writing inbreeding and relationship coefficient into file ...
+(you can add an option '--triangle' to output the triangle (ijk) format.)
+The relationship coefficient of 1000 individuals have been saved in the file [/public/share/likui/hanyu/testresult/HIBLUP/4/1/chr1_1000.rc].
+The inbreeding coefficient of 1000 individuals have been saved in the file [/public/share/likui/hanyu/testresult/HIBLUP/4/1/chr1_1000.ibc].
+
+Analysis finished: Thu Apr 09 11:21:51 2026
+Total running time: 0h0m2s

@@ -1,0 +1,101 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_235602_863718  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Compute genomic relationship matrix
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     relationship-matrix  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the **relationship-matrix** skill from piggpa-G. Here's a      
+     summary of what's available:                                               
+                                                                                
+     ## Relationship Matrix Construction                                        
+                                                                                
+     The `relationship_matrix_construction.py` script can build multiple        
+     types of relationship matrices:                                            
+                                                                                
+     ### Matrices Generated                                                     
+     | Matrix | Description |                                                   
+     |--------|-------------|                                                   
+     | **PRM** | Pedigree Relationship Matrix (Henderson's method) |            
+     | **GRM-VanRaden** | Genomic RM, centered genotypes scaled by Σ2pq |       
+     | **GRM-Yang** | Genomic RM, per-SNP scaling with (n-1) denominator |      
+     | **HRM** | Hybrid RM = τ × GRM + ω × PRM |                                
+     | **HRM-SSBLUP** | SSBLUP version = λ_g × GRM + (1−λ_g) × PRM |            
+     | **Environmental** | Identity, Block, Spatial (exp decay), Temporal       
+     (exp decay) |                                                              
+                                                                                
+     ### Required Input                                                         
+     - **`-i`** — PLINK binary file prefix (.bed/.bim/.fam)                     
+                                                                                
+     ### Optional Inputs                                                        
+     - `--pedigree` — tab-separated file (ID, Sire, Dam)                        
+     - `--chrom` — restrict to single chromosome                                
+     - `--maf` — MAF filter threshold                                           
+     - `--spatial_coords` / `--time_points` / `--env_block` — for               
+     environmental matrices                                                     
+                                                                                
+     ### Output                                                                 
+     - CSV files for all relationship matrices                                  
+     - `relationship_matrix_summary.txt` / `-zh.txt` (statistics)               
+     - Heatmap overview (2×3 subplot) + distribution plots (2×2 subplot)        
+     - PDF and PNG figures                                                      
+                                                                                
+     ---                                                                        
+                                                                                
+     **To proceed, I need to know:**                                            
+     - The path to your PLINK binary file prefix (e.g., `/path/to/my_data`)     
+     - Any options from the list above you'd like to use                        
+                                                                                
+     Do you have your PLINK data ready? What's the file prefix?                 
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_235602_863718
+
+Session:        20260701_235602_863718
+Duration:       19s
+Messages:       5 (2 user, 2 tool calls)

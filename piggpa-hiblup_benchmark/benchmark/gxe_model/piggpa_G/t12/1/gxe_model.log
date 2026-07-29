@@ -1,0 +1,22 @@
+GxE Model Analysis Log
+============================================================
+Model: Trait = 1 + Temp(C) + Humidity(C) + Temp:GA.GA(R[GxE]) + Humidity:GA.GA(R[GxE]) + GA(R[G]) + e
+Method: REML (scipy.optimize L-BFGS-B + log parameterization)
+GRM: VanRaden + Su normalization
+GxE GRM: Hadamard product G*E
+SNPs: 5556, Samples: 1000
+
+Final LogL: -3166.599148
+
+Variance components:
+  Temp:GA.GA: Var=0.000000, SE=149.767223, h2=0.000000, h2_SE=0.700933
+  Humidity:GA.GA: Var=0.040029, SE=150.872609, h2=0.000187, h2_SE=0.706106
+  GA: Var=86.818016, SE=15.683915, h2=0.406321, h2_SE=0.065828
+  e: Var=126.810404, SE=221.564000, h2=0.593491, h2_SE=1.038054
+
+Fixed effects:
+  mu: 9.85514 +/- 3.8207
+  Temp: 1.9997 +/- 0.101257
+  Humidity: 0.50742 +/- 0.0373955
+
+Total running time: 136.0s

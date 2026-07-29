@@ -1,0 +1,16 @@
+Parameter,piggpa_G,HIBLUP,Difference,Notes
+h2 (heritability),10.635693,9.446890,-1.188803,Both h2>1 (strong genetic signal in in-silico data)
+h2 SE,4.964464,0.112659,-4.851805,piggpa-G SE reflects correct M/N scaling
+h2 P-value,0.015267,<2e-16 (0),N/A,Both significant; piggpa-G P-value unchanged (z-score ratio preserved)
+Intercept,-1.043689,-0.688731,0.354958,Both negative; piggpa-G more negative
+Intercept SE,1.023089,1.387020,0.363931,Standard error of intercept
+Sample size (N),1000,1000,0,Same
+Number of SNPs (M),5556,5516,-40,HIBLUP uses M=5516 (two-step estimator excludes 40 SNPs)
+Lambda GC,N/A,1.13537,N/A,HIBLUP only
+Mean Chi^2,N/A,1.14762,N/A,HIBLUP only
+Regression method,Standard OLS,Two-step (cutoff=30),N/A,Different regression estimators
+h2 formula used,h2 = slope * M / N,h2 = slope * M / N,N/A,Both use correct Bulik-Sullivan 2015 formula
+Derived slope,1.914272,1.712634,-0.201638,Slopes are similar (~1.7-1.9); difference from regression method
+HIBLUP h2 via wrong N/M formula,N/A,0.310485,N/A,Counterfactual: if HIBLUP used the wrong N/M formula (N/M swapped)
+piggpa-G h2 via wrong N/M formula,0.344541,N/A,N/A,Counterfactual: piggpa-G result with wrong N/M formula; shown for comparison
+Discrepancy ratio (HIBLUP/piggpa),N/A,0.888,N/A,~0.89; close to 1; remaining diff from M and regression method

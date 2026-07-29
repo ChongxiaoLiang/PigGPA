@@ -1,0 +1,143 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 17:40:44 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --multi-trait \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --pheno /public/share/likui/hanyu/testdata/In-silico-data/t10/2/simulated_phenotypes_multi_trait.txt \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --pheno-pos 2 3 4 \
+  --dcovar 5,6 5,6 5,6 \
+  --add \
+  --thread 4 \
+  --float-prec \
+  --out multi_trait 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [multi_trait.log].
+
+Loading phenotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/t10/2/simulated_phenotypes_multi_trait.txt].
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+9000 individuals having only phenotype information have been discarded.
+Number of effective (diagonal) and shared (off-diagonal) records among traits:
+ T1 1000    .    .
+ T2 1000 1000    .
+ T3 1000 1000 1000
+
+Multiple Traits Model Fitted:
+  T1 = 1 + sex(F) + season(F) + GA(R[G]) + e
+  T2 = 1 + sex(F) + season(F) + GA(R[G]) + e
+  T3 = 1 + sex(F) + season(F) + GA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Total 1000 individuals will be predicted.
+
+Total 6 variance and 6 covariance (including residual's) need to be estimated.
+(residual covariance components can be ignored by setting '--ignore-cove')
+Variance components estimation using: AI(20)
+The matrix V has a dimension of 3000 x 3000.
+Running ...
+Alg. Iter. LogL. T1_V(GA) T1_V(e) T2_V(GA) T2_V(e) T3_V(GA) T3_V(e) T1:T2_COV(GA) T1:T3_COV(GA) T2:T3_COV(GA) T1:T2_COV(e) T1:T3_COV(e) T2:T3_COV(e) 
+[AI] 1 -6438.76 56.05481 78.34673 96.23481 130.33698 2.12468 6.39428 64.46902 9.53698 11.18538 85.83699 16.53065 20.44618 
+[AI] 2 -6322.58 22.52220 82.55589 49.20651 95.74364 1.17490 5.05768 32.93944 3.51743 5.60765 69.37275 15.21718 13.45382 
+[AI] 3 -6283.09 28.54106 85.09293 61.27050 102.87102 0.92823 5.60809 41.34237 4.81456 7.37255 73.12324 16.34595 15.32909 
+[AI] 4 -6258.28 29.45761 85.59103 63.74449 104.16087 0.95813 5.55061 42.88939 4.80023 7.46570 73.89292 16.56798 15.69734 
+[AI] 5 -6265.57 29.43202 85.65582 63.76665 104.22581 0.95788 5.55853 42.87494 4.82243 7.49228 73.96287 16.55897 15.68574 
+[AI] 6 -6260.40 29.45300 85.63731 63.78540 104.21170 0.95811 5.55756 42.89499 4.82268 7.49280 73.94637 16.55819 15.68523 
+[AI] 7 -6267.58 29.43589 85.65499 63.77617 104.22008 0.95795 5.55856 42.88086 4.81941 7.48963 73.96023 16.56197 15.68810 
+[AI] 8 -6265.13 29.44359 85.64689 63.78104 104.21550 0.95799 5.55815 42.88740 4.82104 7.49124 73.95372 16.56011 15.68665 
+[AI] 9 -6266.37 29.44024 85.64941 63.77948 104.21590 0.95799 5.55828 42.88474 4.82037 7.49063 73.95532 16.56071 15.68701 
+[AI] 10 -6265.88 29.44169 85.64922 63.78148 104.21607 0.95797 5.55825 42.88645 4.82053 7.49078 73.95531 16.56067 15.68711 
+[AI] 11 -6266.02 29.44226 85.64777 63.77987 104.21615 0.95790 5.55812 42.88594 4.82079 7.49094 73.95474 16.56020 15.68686 
+[AI] 12 -6264.24 29.44281 85.64706 63.77978 104.21644 0.95791 5.55805 42.88624 4.82097 7.49110 73.95439 16.55996 15.68669 
+[AI] 13 -6265.61 29.43979 85.65086 63.77913 104.21734 0.95795 5.55823 42.88426 4.82037 7.49060 73.95686 16.56084 15.68727 
+[AI] 14 -6267.87 29.43888 85.65149 63.78120 104.21549 0.95798 5.55829 42.88445 4.82019 7.49061 73.95660 16.56099 15.68718 
+[AI] 15 -6264.73 29.44315 85.64661 63.78140 104.21511 0.95805 5.55814 42.88730 4.82102 7.49131 73.95331 16.56002 15.68643 
+[AI] 16 -6264.84 29.44172 85.64745 63.77970 104.21576 0.95796 5.55820 42.88567 4.82060 7.49079 73.95419 16.56031 15.68681 
+[AI] 17 -6261.14 29.44966 85.63992 63.78418 104.21165 0.95798 5.55765 42.89214 4.82244 7.49258 73.94833 16.55828 15.68529 
+[AI] 18 -6262.46 29.44643 85.64311 63.78296 104.21356 0.95800 5.55790 42.88984 4.82161 7.49180 73.95075 16.55926 15.68603 
+[AI] 19 -6257.38 29.45737 85.63286 63.78839 104.20856 0.95824 5.55733 42.89902 4.82410 7.49427 73.94229 16.55676 15.68386 
+[AI] 20 -6266.47 29.43879 85.65073 63.77765 104.21772 0.95791 5.55823 42.88313 4.82007 7.49022 73.95687 16.56091 15.68742 
+[Converged?] No! More iterations are required.
+
+Summary of estimated variances and heritability for all traits:
+            Var  Var_SE     h2  h2_SE h2_Pr(Chisq)
+ T1_GA  29.4388  7.6847 0.2558 0.0637     0.000059
+  T1_e  85.6507  7.6687 0.7442 0.0637       <2e-16
+ T2_GA  63.7777 12.3075 0.3796 0.0666     1.20e-08
+  T2_e 104.2177 10.9582 0.6204 0.0666       <2e-16
+ T3_GA   0.9579  0.4216 0.1470 0.0636     0.020852
+  T3_e   5.5582  0.4601 0.8530 0.0636       <2e-16
+Results of estimated variances have been saved in the file [multi_trait.vars].
+
+Summary of estimated covariances and genetic correlation between traits:
+            COVar COVar_SE      r   r_SE r_Pr(Chisq)
+ T1:T2_GA 42.8831   9.0581 0.9897 0.0343      <2e-16
+ T1:T3_GA  4.8201   1.6235 0.9077 0.0780      <2e-16
+ T2:T3_GA  7.4902   1.9881 0.9583 0.1001      <2e-16
+  T1:T2_e 73.9569   8.3705 0.7828 0.0246      <2e-16
+  T1:T3_e 16.5609   1.6819 0.7590 0.0250      <2e-16
+  T2:T3_e 15.6874   1.9243 0.6518 0.0365      <2e-16
+Results of estimated covariances have been saved in the file [multi_trait.covars].
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients for 'T1':
+        Levels Estimation     SE
+            mu   195.3345 0.7333
+         sex_M     5.5007 0.6663
+ season_Spring     3.3743 0.9287
+ season_Summer    10.2415 0.9139
+ season_Winter    -5.7795 0.9774
+Analysis of variance table for 'T1':
+ Factors  Df      SumSq     MeanSq      F Pr(>F)
+     sex   1  7544.0137  7544.0137  88.08 <2e-16
+  season   3 33221.1289 11073.7100 129.29 <2e-16
+       e 995 85222.4766    85.6507
+Summary of estimated coefficients for 'T2':
+        Levels Estimation     SE
+            mu   209.2128 0.8658
+         sex_M     8.2872 0.7964
+ season_Spring     9.7147 1.1065
+ season_Summer    22.0539 1.0896
+ season_Winter    -3.6747 1.1690
+Analysis of variance table for 'T2':
+ Factors  Df       SumSq     MeanSq      F Pr(>F)
+     sex   1  17123.1543 17123.1543 164.30 <2e-16
+  season   3 100885.0156 33628.3398 322.67 <2e-16
+       e 995 103696.6328   104.2177
+Summary of estimated coefficients for 'T3':
+        Levels Estimation     SE
+            mu    28.9531 0.1780
+         sex_M    -1.0429 0.1602
+ season_Spring     1.0310 0.2238
+ season_Summer     4.3180 0.2202
+ season_Winter    -2.0295 0.2349
+Analysis of variance table for 'T3':
+ Factors  Df     SumSq    MeanSq      F   Pr(>F)
+     sex   1  271.1536  271.1536  48.78 5.22e-12
+  season   3 5288.8682 1762.9561 317.18   <2e-16
+       e 995 5530.4424    5.5582
+Coefficients of all covariates and fixed effects are saved in files [multi_trait.T1.beta, multi_trait.T2.beta, multi_trait.T3.beta].
+Random effects of all individuals are saved in files [multi_trait.T1.rand, multi_trait.T2.rand, multi_trait.T3.rand].
+
+Analysis finished: Thu Apr 02 17:40:48 2026
+Total running time: 0h0m4s

@@ -1,0 +1,11 @@
+I have genotype data and loin-muscle-depth phenotype records from over two thousand pigs. I would like to identify genomic loci significantly associated with loin muscle depth, and further predict whether the regions harboring these loci exhibit regulatory activity.
+
+The genotype data (PLINK binary format with phenotype in the 6th column of .fam) is at:
+- /workspace/pigbole/benchmark/agent_benchmark/ONE2/data/lmd.phe.bed
+- /workspace/pigbole/benchmark/agent_benchmark/ONE2/data/lmd.phe.bim
+- /workspace/pigbole/benchmark/agent_benchmark/ONE2/data/lmd.phe.fam
+
+A covariate file (FID IID year batch sex, space-delimited) is at:
+- /workspace/pigbole/benchmark/agent_benchmark/ONE2/data/lmd.cov
+
+Please save all output files to your current working directory.

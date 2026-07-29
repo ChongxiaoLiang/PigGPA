@@ -1,0 +1,49 @@
+======================================================================
+LD Score Regression Analysis
+======================================================================
+
+[1/5] Loading data...
+  Loading LD scores...
+    LD scores: 5556 SNPs
+  Loading summary statistics...
+    Summary stats: 5556 SNPs
+    Merged: 5556 SNPs
+
+[2/5] Calculating chi-squared statistics...
+  Sample size: 1000
+  Number of SNPs: 5556
+
+[3/5] Performing LD Score regression...
+
+  Results:
+    Heritability (h²): 0.3445 ± 0.1608
+    Intercept: -1.0437 ± 1.0231
+    P-value: 1.53e-02
+
+[4/5] Generating visualizations...
+  Plotting forest plot...
+    Forest plot saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/forest_plot.pdf
+  Plotting h² vs MAF...
+    h² vs MAF plot saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/h2_vs_maf.pdf
+  Plotting Manhattan plot...
+    Manhattan plot saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/manhattan_plot.pdf
+  Plotting LD Score regression...
+    LD Score regression plot saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/ld_score_regression.pdf
+
+[5/5] Saving results...
+  Results saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/ld_score_regression_results.csv
+  Summary saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/ld_score_regression_summary.txt
+  Heritability estimates saved: /public/share/likui/hanyu/testdata/In-silico-data/t20/2/heritability_estimates.csv
+
+======================================================================
+LD Score Regression Analysis Complete!
+======================================================================
+
+Output files:
+  1. ld_score_regression_results.csv - Regression results
+  2. ld_score_regression_summary.txt - Analysis summary
+  3. heritability_estimates.csv - Heritability estimates
+  4. forest_plot.pdf - Forest plot
+  5. h2_vs_maf.pdf - Heritability vs MAF
+  6. manhattan_plot.pdf - Manhattan plot
+  7. ld_score_regression.pdf - LD Score regression plot

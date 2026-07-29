@@ -1,0 +1,169 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_220014_61be81  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Q-Q plot for association analysis
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     gwas-workflow-diagnostic  0.1s
+  │ 📚 skill     plink-gwas  0.0s
+  │ 📚 skill     gcta-gwas  0.1s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     Let me summarize what I found about Q-Q plots for association              
+     analysis.                                                                  
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Q-Q Plot for Association Analysis (GWAS)                                
+                                                                                
+     A Q-Q (Quantile-Quantile) plot is the primary diagnostic tool to           
+     assess whether GWAS results suffer from genomic inflation — typically      
+     caused by population stratification or cryptic relatedness.                
+                                                                                
+     ### What It Shows                                                          
+                                                                                
+     | Axis | Meaning |                                                         
+     |------|---------|                                                         
+     | **X-axis** | Expected -log₁₀(P) under the null hypothesis (no            
+     association) |                                                             
+     | **Y-axis** | Observed -log₁₀(P) from the actual GWAS results |           
+     | **Diagonal line** | Expected = Observed (perfect null, no inflation)     
+     |                                                                          
+     | **Blue scatter points** | One point per SNP, showing observed vs         
+     expected P-values |                                                        
+                                                                                
+     ### Key Metric: Genomic Inflation Factor (λ)                               
+                                                                                
+     ```                                                                        
+     λ = median(observed χ²₁ from P-values) / median(χ²₁ under null)            
+       = median(qchisq(1-P, 1)) / qchisq(0.5, 1) ≈ median(qchisq(1-P, 1)) /     
+     0.456                                                                      
+     ```                                                                        
+                                                                                
+     **λ Interpretation Table:**                                                
+                                                                                
+     | λ Range | Meaning | Action |                                             
+     |---------|---------|--------|                                             
+     | 0.95 - 1.05 | No inflation, results valid | Report as-is |               
+     | 1.05 - 1.10 | Mild inflation | Report with caution |                     
+     | 1.10 - 2.0 | Significant stratification | Use PCA-corrected GWAS or      
+     GCTA MLMA |                                                                
+     | > 2.0 | Severe stratification | Must use GCTA MLMA mixed model |         
+     | < 0.9 | Possible over-correction | Check data quality, QC settings |     
+                                                                                
+     ### How to Read the Q-Q Plot                                               
+                                                                                
+     1. **Points following the diagonal** through the bulk of the               
+     distribution → no systematic inflation                                     
+     2. **Tail deviating upward at the far right** → true associations          
+     (expected and desirable)                                                   
+     3. **Early and sustained upward deviation** (points lift off the           
+     diagonal from the start) → genomic inflation from population structure     
+     4. **Many SNPs way above the line across the whole range** → severe        
+     stratification, results unreliable                                         
+                                                                                
+     ---                                                                        
+                                                                                
+     ### How to Generate Q-Q Plots in PigGPA                                    
+                                                                                
+     There are two pathways:                                                    
+                                                                                
+     **Path A: PLINK linear GWAS (fast diagnostic, minutes)**                   
+                                                                                
+     ```bash                                                                    
+     # Step 1: Run GWAS                                                         
+     bash                                                                       
+     /workspace/pigbole/.piggpa/skills/piggpa-G/plink-gwas/scripts/PLINK-GW     
+     AS-linear.sh \                                                             
+       --bfile data/genotype --pheno data/phenotypes.tsv --out                  
+     output/plink_gwas                                                          
+                                                                                
+     # Step 2: Generate plots (includes Q-Q)                                    
+     conda activate R                                                           
+     Rscript                                                                    
+     /workspace/pigbole/.piggpa/skills/piggpa-G/plink-gwas/scripts/PLINK-GW     
+     AS-linear-plot.R \                                                         
+       --plink_assoc_file output/plink_gwas.assoc.linear \                      
+       --output_prefix plink_gwas --outdir output/                              
+     ```                                                                        
+                                                                                
+     Output: `plink_gwas_qq.pdf` and `plink_gwas_qq.png` (both formats, 300     
+     DPI PNG)                                                                   
+                                                                                
+     **Path B: GCTA MLMA mixed model (gold standard, hours for large            
+     data)**                                                                    
+                                                                                
+     After building GRM and running MLMA, plots are generated by the R          
+     runner script. Output: `<prefix>_<trait>_qq.pdf` and `.png`.               
+                                                                                
+     ---                                                                        
+                                                                                
+     ### Common Pig Data Gotchas                                                
+                                                                                
+     - **Pig populations often have strong family structure** — λ of            
+     2.0-4.0 is common in uncorrected PLINK GWAS. This is expected, not         
+     alarming.                                                                  
+     - **The diagnostic workflow**: run PLINK first → check λ → if >1.1,        
+     add 20 PCs as covariates → recheck λ → if still >1.5, transition to        
+     GCTA MLMA.                                                                 
+     - **Lambda alone doesn't tell the full story**: if PCA correction          
+     brings λ from 3.0 to 2.0, and the remaining significant SNPs cluster       
+     on 1-3 chromosomes (not scattered), those are likely real QTL signals      
+     despite λ still being >1.0.                                                
+                                                                                
+     ---                                                                        
+                                                                                
+     Do you have existing GWAS results you'd like me to generate Q-Q plots      
+     for? Or would you like to run a full GWAS with Q-Q diagnostics on your     
+     data? If so, please tell me the location of your PLINK binary files        
+     and phenotype file.                                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_220014_61be81
+
+Session:        20260701_220014_61be81
+Duration:       27s
+Messages:       7 (2 user, 4 tool calls)

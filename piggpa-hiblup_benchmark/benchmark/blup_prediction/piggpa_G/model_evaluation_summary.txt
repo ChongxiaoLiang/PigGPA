@@ -1,0 +1,59 @@
+================================================================================
+Five-Model Prediction Breeding Value Comparison Summary
+================================================================================
+
+Result directory: /public/share/likui/liangcx/bole/HIBLUP_benchmark/new_benchmark/t7
+Phenotype file: /public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt
+Validation samples: 1000
+
+================================================================================
+1. Model Description
+================================================================================
+
+1. LM (Linear Model): Linear model using HE regression for variance component estimation (GA matrix)
+2. BLUP: Genomic BLUP using EMAI-REML for variance component estimation (GA matrix)
+3. PBLUP: BLUP based on pedigree relationship matrix (PA matrix)
+4. GBLUP: BLUP based on genomic relationship matrix (GA matrix)
+5. SSBLUP: Single-step genomic BLUP, combining pedigree and genomic information (HA matrix)
+
+NOTE: The BLUP model in piggpa-G uses GA (genomic relationship matrix), which is identical to
+      the GBLUP implementation; HIBLUP's BLUP uses PA (pedigree relationship matrix). The two are
+      NOT directly numerically comparable despite sharing the same model name.
+
+================================================================================
+2. Training Results Comparison
+================================================================================
+
+Model            Heritability(h2) VarComp(V_G)     RelMatrix Type
+------------------------------------------------------------------------
+LM               1.0000         0.1169           GA (HE regression)
+BLUP             0.2239         0.2312           GA (基因组加性)
+PBLUP            0.5000         0.5179           PA (系谱加性)
+GBLUP            0.2239         0.2312           GA (基因组加性)
+SSBLUP           0.2357         0.2434           HA (混合加性)
+
+================================================================================
+3. Prediction Results Comparison
+================================================================================
+
+Model            BV Correlation Pheno Correlation MSE
+------------------------------------------------------------------------
+LM               N/A*           N/A*           N/A*
+BLUP             0.0540         0.0701         1.1586
+PBLUP            N/A*           N/A*           N/A*
+GBLUP            0.0540         0.0701         1.1586
+SSBLUP           0.0540         0.0701         1.1543
+
+* PBLUP is based on pedigree relationship matrix; validation samples have no pedigree relationship with training samples, so direct prediction is not possible
+
+================================================================================
+4. Conclusion
+================================================================================
+
+1. Best model: BLUP (BV correlation: 0.0540)
+
+2. Model characteristics:
+   - LM model uses HE regression; heritability estimates may be biased upward
+   - BLUP and GBLUP produce identical results because both use the GA (genomic) matrix
+   - SSBLUP combines pedigree and genomic information; prediction accuracy may be slightly higher
+   - PBLUP cannot predict individuals without pedigree relationship to training samples

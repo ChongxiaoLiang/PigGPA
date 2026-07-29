@@ -1,0 +1,6 @@
+Factor	Estimation	SE
+Intercept	28.960756	0.181340
+Sex_M	-1.038011	0.161031
+Season_Spring	0.985180	0.225856
+Season_Summer	4.300035	0.221935
+Season_Winter	-1.997418	0.235963

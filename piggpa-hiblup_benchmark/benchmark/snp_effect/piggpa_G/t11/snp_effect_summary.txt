@@ -1,0 +1,9 @@
+SNP Effect Calculation Summary
+============================================================
+
+Number of samples: 1000
+Number of SNPs: 5556
+
+Effect statistics:
+  Mean of estimated effects: 0.000076
+  Std of estimated effects: 0.007841

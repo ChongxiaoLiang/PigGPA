@@ -1,0 +1,148 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_230220_ab0a52  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Compare BayesA/B/C/BRR/BL/GBLUP prediction accuracy
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     genomic-selection  0.0s
+  │ 🔎 find      *.bed  2.4s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the **genomic-selection** skill from piggpa-G, which is        
+     exactly designed for this task — comparing BayesA/B/C/BRR/BL/GBLUP via     
+     K-fold cross-validation. Here's a summary of what I found and what we      
+     need to proceed:                                                           
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Skill: genomic-selection                                                
+                                                                                
+     This skill runs a 3-step pipeline:                                         
+                                                                                
+     | Step | Script | Purpose |                                                
+     |------|--------|---------|                                                
+     | 1 | `makerawfile.sh` | PLINK binary → `.raw` (additive 0/1/2 coding)     
+     |                                                                          
+     | 2 | `plink_extract_by_p.sh` | *(Optional)* Extract SNPs by GWAS          
+     p-value threshold |                                                        
+     | 3 | `GS6models.R` | K-fold CV for all 6 models + comparison plots +      
+     summary report |                                                           
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Available Datasets Found                                                
+                                                                                
+     Several PLINK binary datasets are available. The most relevant             
+     candidates:                                                                
+                                                                                
+     | Dataset | Path |                                                         
+     |---------|------|                                                         
+     | **simulated demo** |                                                     
+     `/workspace/algba_data/96ee730788e04736/input/demo.{bed,bim,fam}` |        
+     | **testps (test)** |                                                      
+     `/workspace/pigbole/testdata/testdata/testps.{bed,bim,fam}` |              
+     | **reference 50k** |                                                      
+     `/workspace/pigbole/testdata/testdata/reference_50k.{bed,bim,fam}` |       
+     | **giab048 (QC'd)** |                                                     
+     `/workspace/tmp/giab048_case_study/giab048_qc_qc.{bed,bim,fam}` |          
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Analysis Workflow (Ready to Execute)                                    
+                                                                                
+     Once you pick a dataset, the workflow is:                                  
+                                                                                
+     ```bash                                                                    
+     # Step 1: Convert to .raw format                                           
+     bash                                                                       
+     /workspace/pigbole/.piggpa/skills/piggpa-G/genomic-selection/scripts/m     
+     akerawfile.sh \                                                            
+       --bfile <dataset_prefix> \                                               
+       --out <output_prefix>                                                    
+                                                                                
+     # Step 2: Run 6-model comparison (default: 10-fold CV)                     
+     Rscript                                                                    
+     /workspace/pigbole/.piggpa/skills/piggpa-G/genomic-selection/scripts/G     
+     S6models.R \                                                               
+       --input <output_prefix>.raw \                                            
+       --outdir <output_dir> \                                                  
+       --folds 10 \                                                             
+       --bglr_iter 1000 --bglr_burnin 500                                       
+     ```                                                                        
+                                                                                
+     **Output you'll get:**                                                     
+     - `model_comparison.csv` — Mean r / RMSE / MAE for each model              
+     - `model_comparison.pdf/png` — Bar chart with error bars                   
+     - `summary.txt` / `summary-zh.txt` — Best-model report with composite      
+     scores                                                                     
+                                                                                
+     **Scoring:** 50% correlation + 25% RMSE + 15% MAE + 10% stability =        
+     composite rank.                                                            
+                                                                                
+     ---                                                                        
+                                                                                
+     ## What I Need From You                                                    
+                                                                                
+     1. **Which dataset** do you want to use? Simulated demo, testps,           
+     reference 50k, or something else?                                          
+     2. **K-fold count** — default is 10; reduce to 5 for faster results        
+     3. **MCMC iterations** — default 1000/500; reduce to 500/250 for speed     
+     4. **Any phenotype column** you want to target, or auto-detect from        
+     `.fam`?                                                                    
+                                                                                
+     This comparison is computationally heavy — Bayesian methods                
+     (BayesA/B/C/BRR/BL) use MCMC and can take 10-60+ min per fold for          
+     large datasets. GBLUP is much faster. For quick testing, I'd recommend     
+     the simulated demo dataset with 5 folds and 500 iterations.                
+                                                                                
+     Which dataset and parameters should I use?                                 
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_230220_ab0a52
+
+Session:        20260701_230220_ab0a52
+Duration:       29s
+Messages:       6 (2 user, 3 tool calls)

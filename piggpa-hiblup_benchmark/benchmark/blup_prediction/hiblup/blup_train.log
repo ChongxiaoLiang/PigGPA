@@ -1,0 +1,94 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 14:50:02 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --single-trait \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --pheno /public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --pheno-pos 2 \
+  --add \
+  --vc-method EMAI \
+  --thread 4 \
+  --float-prec \
+  --out blup_train 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [blup_train.log].
+
+Loading phenotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt].
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+1000 effective records without missing will be used for analysis.
+
+Single Trait Model Fitted:
+  Phenotype = 1 + GA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Total 1000 individuals will be predicted.
+
+Total 2 variance components need to be estimated.
+Variance components estimation using: EM(20) + AI(20)
+The matrix V has a dimension of 1000 x 1000.
+Running ...
+Alg.	Iter.	LogL.	V(GA)	V(e)
+[EM]	1	-523.27	0.51446	0.55668	
+[EM]	2	-521.07	0.50311	0.58257	
+[EM]	3	-519.90	0.48933	0.60131	
+[EM]	4	-519.06	0.47521	0.61581	
+[EM]	5	-518.39	0.46164	0.62770	
+[EM]	6	-517.81	0.44893	0.63787	
+[EM]	7	-517.31	0.43716	0.64685	
+[EM]	8	-516.88	0.42629	0.65491	
+[EM]	9	-516.50	0.41628	0.66224	
+[EM]	10	-516.17	0.40704	0.66896	
+[EM]	11	-515.88	0.39850	0.67515	
+[EM]	12	-515.62	0.39059	0.68088	
+[EM]	13	-515.40	0.38326	0.68620	
+[EM]	14	-515.19	0.37645	0.69114	
+[EM]	15	-515.01	0.37010	0.69576	
+[EM]	16	-514.85	0.36418	0.70008	
+[EM]	17	-514.71	0.35864	0.70412	
+[EM]	18	-514.58	0.35345	0.70792	
+[EM]	19	-514.46	0.34859	0.71149	
+[EM]	20	-514.36	0.34402	0.71485	
+[AI]	21	-514.26	0.22593	0.80212	
+[AI]	22	-513.18	0.24116	0.79362	
+[AI]	23	-513.16	0.24044	0.79438	
+[AI]	24	-513.16	0.24049	0.79433	
+[AI]	25	-513.16	0.24049	0.79433	
+[Converged?] Yes!
+
+Summary of estimated variances and heritability:
+       Var Var_SE     h2  h2_SE h2_Pr(Chisq)
+ GA 0.2405 0.0691 0.2324 0.0642     0.000296
+  e 0.7943 0.0702 0.7676 0.0642       <2e-16
+Results of estimated variance components have been saved in the file [blup_train.vars].
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients:
+ Levels Estimation     SE
+     mu     0.0094 0.0282
+Coefficients of all covariates and fixed effects are saved in file [blup_train.beta].
+Random effects of all individuals are saved in file [blup_train.rand].
+
+Analysis finished: Thu Apr 02 14:50:03 2026
+Total running time: 0h0m1s

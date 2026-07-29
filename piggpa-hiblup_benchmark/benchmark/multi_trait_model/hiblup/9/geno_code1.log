@@ -1,0 +1,32 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Mon Apr 13 18:52:58 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --trans-geno \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --add \
+  --code-method 1 \
+  --out geno_code1 
+
+Program will be running on up to 64 threads.
+The log will be recorded in file [geno_code1.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+Transforming genotype into additive coding format ...
+Result of 1000 individuals with 5556 markers has been saved in file [geno_code1.geno.A.txt].
+
+Analysis finished: Mon Apr 13 18:53:00 2026
+Total running time: 0h0m2s

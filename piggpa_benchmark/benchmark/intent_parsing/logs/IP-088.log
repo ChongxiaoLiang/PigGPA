@@ -1,0 +1,141 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_234503_9b37d6  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Estimate LD decay in 50kb windows
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     ld  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the LD decay analysis skill. Here's what you need to run:      
+                                                                                
+     ---                                                                        
+                                                                                
+     ## LD Decay Analysis Command                                               
+                                                                                
+     ```bash                                                                    
+     conda activate piggpa                                                      
+     export PATH="/workspace/app/bin:$PATH"                                     
+                                                                                
+     python                                                                     
+     /workspace/pigbole/.piggpa/skills/piggpa-G/ld/scripts/ld_calculation.p     
+     y \                                                                        
+       -i <your_plink_prefix> \                                                 
+       -o <output_directory> \                                                  
+       --max-dist 500 \                                                         
+       --decay-max-kb 500 \                                                     
+       --maf 0.05 \                                                             
+       --fit-method hill-weir                                                   
+     ```                                                                        
+                                                                                
+     You must replace `<your_plink_prefix>` with the path to your PLINK         
+     binary files (.bed/.bim/.fam, without extension), and                      
+     `<output_directory>` with your desired output folder.                      
+                                                                                
+     ---                                                                        
+                                                                                
+     ## What "50kb Windows" Means in Context                                    
+                                                                                
+     The LD skill computes pairwise r² between all SNP pairs, grouped by        
+     distance. The PopLDdecay engine computes at **1bp resolution**, then       
+     the script re-bins to **1kb intervals** (weighted by number of SNP         
+     pairs) to produce a smooth curve. This means LD is calculated for          
+     every distance bin from 1kb up to the `--max-dist` you specify             
+     (default 500kb).                                                           
+                                                                                
+     The "window" concept is inherent in the binning — every 1kb bin is         
+     essentially a window where LD is averaged. For 50kb analysis, the          
+     results naturally include r² values at 50kb, 100kb, 150kb, etc.            
+                                                                                
+     ---                                                                        
+                                                                                
+     ## What You'll Get                                                         
+                                                                                
+     | File | Description |                                                     
+     |------|-------------|                                                     
+     | `ld_decay_data.csv` | Binned distances (Dist_Kb), mean r², and SNP       
+     pair counts per bin |                                                      
+     | `ld_summary.txt` / `ld_summary-zh.txt` | r²=0.2 and r²=0.1 decay         
+     distances, Hill-Weir C parameter, Ne estimate, GWAS window                 
+     recommendations |                                                          
+     | `ld_decay_curve.pdf` / `.png` | LD decay plot: X = distance (kb), Y      
+     = r², with r²=0.2 threshold annotation |                                   
+                                                                                
+     ---                                                                        
+                                                                                
+     ## Key Parameters                                                          
+                                                                                
+     - **`--max-dist 500`**: Compute LD up to 500kb between SNP pairs           
+     - **`--decay-max-kb 500`**: Plot X-axis up to 500kb (auto-enlarges if      
+     r²=0.2 >300kb)                                                             
+     - **`--maf 0.05`**: Filter out rare variants (MAF < 5%)                    
+     - **`--fit-method hill-weir`**: Fit the Hill & Weir theoretical model      
+     E(r²) = (10+Cd)/((2+Cd)(11+Cd)) for smooth decay estimation and Ne         
+     inference                                                                  
+     - **`--chrom`** (optional): Run on a single chromosome for faster          
+     testing                                                                    
+                                                                                
+     ---                                                                        
+                                                                                
+     ## ⚠️ Time Warning                                                         
+                                                                                
+     For a typical pig dataset with ~50K SNPs, expect **10–30 minutes**.        
+     For larger datasets (>500K SNPs), computation may take **several           
+     hours**. I recommend testing with `--chrom` on a single chromosome         
+     first (e.g., `--chrom 1`) to verify it works before running                
+     genome-wide.                                                               
+                                                                                
+     ---                                                                        
+                                                                                
+     Do you have your PLINK binary files ready? What's the path to your         
+     `.bed/.bim/.fam` prefix?                                                   
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_234503_9b37d6
+
+Session:        20260701_234503_9b37d6
+Duration:       32s
+Messages:       5 (2 user, 2 tool calls)

@@ -1,0 +1,90 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 14:47:55 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --single-trait \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --pheno /public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt \
+  --pedigree pedigree_hiblup.txt \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --pheno-pos 2 \
+  --add \
+  --alpha 0.05 \
+  --thread 4 \
+  --float-prec \
+  --out ssblup_train 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [ssblup_train.log].
+
+Loading phenotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt].
+Loading pedigree file ...
+10000 unique individuals have been detected in file [pedigree_hiblup.txt].
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+1000 effective records without missing will be used for analysis.
+
+Single Trait Model Fitted:
+  Phenotype = 1 + HA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+
+Derive PA matrix ...
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Construct HA matrix ...
+1000 genotyped individuals have been found in pedigree.
+Extract A11 from pedigree based relationship matrix.
+Mean of diagonal and Off-diagonal of A11: 1 0.000998999
+Mean of diagonal and Off-diagonal of G11: 1 -0.00100101
+Adjust G11: G11* = 0.998 * G11 + 0.002
+Weight of A11 and G11: Gw = 0.95 * G11 + 0.05 * A11
+Compute the inverse of A11 matrix ... 
+Fill HA matrix ... 
+HA matrix construction accomplished.
+
+Total 1000 individuals will be predicted.
+
+Total 2 variance components need to be estimated.
+Variance components estimation using: AI(20)
+The matrix V has a dimension of 1000 x 1000.
+Running ...
+Alg.	Iter.	LogL.	V(HA)	V(e)
+[AI]	1	-522.24	0.22138	0.77524	
+[AI]	2	-513.37	0.24715	0.78667	
+[AI]	3	-513.00	0.24773	0.78756	
+[AI]	4	-513.00	0.24772	0.78758	
+[AI]	5	-513.00	0.24772	0.78757	
+[Converged?] Yes!
+
+Summary of estimated variances and heritability:
+       Var Var_SE     h2  h2_SE h2_Pr(Chisq)
+ HA 0.2477 0.0705 0.2393 0.0654     0.000255
+  e 0.7876 0.0711 0.7607 0.0654       <2e-16
+Results of estimated variance components have been saved in the file [ssblup_train.vars].
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients:
+ Levels Estimation     SE
+     mu     0.0097 0.0358
+Coefficients of all covariates and fixed effects are saved in file [ssblup_train.beta].
+Random effects of all individuals are saved in file [ssblup_train.rand].
+
+Analysis finished: Thu Apr 02 14:47:55 2026
+Total running time: 0h0m0s

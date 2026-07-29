@@ -1,0 +1,28 @@
+======================================================================
+  PCA Analysis (matching HIBLUP)
+  Method: GRM eigenvalue decomposition (VanRaden + Su normalization)
+======================================================================
+
+[1] Reading genotype data...
+  Samples: 1000, SNPs: 5556
+
+[2] Computing GRM (VanRaden + Su normalization)...
+  GRM dim: (1000, 1000), diag mean: 1.000000
+
+[3] PCA from GRM eigenvalue decomposition...
+  Top 5 PC standard deviations: [1.447272  1.4452072 1.4373845 1.4353571 1.4335433]
+  Top 5 PC variance explained: [0.20945962 0.20886241 0.20660742 0.20602502 0.20550464]%
+  Cumulative variance (top 5): [0.20945962 0.41832203 0.6249295  0.8309545  1.0364591 ]%
+
+[4] Saving output files (HIBLUP format)...
+  Saved: chr1_pca.pc
+  Saved: chr1_pca.pcp
+  Saved: chr1_pca.log
+
+[5] Generating visualization plots...
+
+  Results saved to: /public/share/likui/hanyu/testdata/In-silico-data/t6/1
+
+======================================================================
+  Analysis complete!
+======================================================================

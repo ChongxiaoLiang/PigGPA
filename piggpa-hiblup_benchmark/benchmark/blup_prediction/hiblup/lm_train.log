@@ -1,0 +1,71 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 14:49:06 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --single-trait \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --pheno /public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --pheno-pos 2 \
+  --add \
+  --vc-method HE \
+  --he-pred \
+  --thread 4 \
+  --float-prec \
+  --out lm_train 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [lm_train.log].
+
+Loading phenotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt].
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+
+1000 effective records without missing will be used for analysis.
+
+Single Trait Model Fitted:
+  Phenotype = 1 + GA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+
+The selected method for GRM: Su GS, et al. DOI:10.1371/journal.pone.0045293
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Construct additive GRM for 1000 individuals using 5556 markers ...
+
+Total 1000 individuals will be predicted.
+
+Total 2 variance components need to be estimated.
+Variance components estimation using: HE
+Running ...
+Alg.	V(GA)	V(e)
+[HE]	0.26948	0.76743	
+
+Summary of estimated variances and heritability:
+       Var Var_SE     h2  h2_SE h2_Pr(Chisq)
+ GA 0.2695 0.0657 0.2599 0.0634     0.000041
+  e 0.7674 0.0657 0.7401 0.0634       <2e-16
+Results of estimated variance components have been saved in the file [lm_train.vars].
+
+Estimate fixed effects and random effects ...
+Construct V matrix with dimension of 1000 x 1000.
+Perform decompositions algorithm ...
+Summary of estimated coefficients:
+ Levels Estimation     SE
+     mu     0.0094 0.0277
+Coefficients of all covariates and fixed effects are saved in file [lm_train.beta].
+Random effects of all individuals are saved in file [lm_train.rand].
+
+Analysis finished: Thu Apr 02 14:49:06 2026
+Total running time: 0h0m0s

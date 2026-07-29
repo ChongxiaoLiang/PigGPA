@@ -1,0 +1,29 @@
+﻿#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 09:04:10 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --hete \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --extract /public/share/likui/hanyu/testdata/In-silico-data/chr1_snps.txt \
+  --out chr1_heterozygosity 
+
+Program will be running on up to 64 threads.
+The log will be recorded in file [chr1_heterozygosity.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+Calculate homozygosity and heterozygosity for 10000 individuals using 5556 markers ...
+Writing genomic heterozygosity into file ...
+The genomic heterozygosity of 10000 individuals have been saved in the file [chr1_heterozygosity.hete].
+
+Analysis finished: Thu Apr 02 09:04:10 2026
+Total running time: 0h0m0s

@@ -1,0 +1,17 @@
+PCA Analysis Log
+============================================================
+Analysis started: Tue Apr 14 11:37:27 2026
+
+Model: PCA from GRM (VanRaden + Su normalization)
+Samples: 1000, SNPs: 5556, PCs: 10
+
+Principal Components analysis ...
+10 PCs have been calculated successfully.
+Overview of the importance for the top PCs:
+                               PC1       PC2       PC3       PC4       PC5
+      Standard deviation    1.4473    1.4452    1.4374    1.4354    1.4335
+  Proportion of Variance    0.0021    0.0021    0.0021    0.0021    0.0021
+   Cumulative Proportion    0.0021    0.0042    0.0062    0.0083    0.0104
+
+Analysis finished: Tue Apr 14 11:37:28 2026
+Total running time: 0h0m1s

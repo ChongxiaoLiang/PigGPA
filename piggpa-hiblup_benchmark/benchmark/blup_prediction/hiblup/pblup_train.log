@@ -1,0 +1,67 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Thu Apr 02 14:47:37 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --single-trait \
+  --pheno /public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt \
+  --pedigree pedigree_hiblup.txt \
+  --keep train_samples.txt \
+  --pheno-pos 2 \
+  --thread 4 \
+  --float-prec \
+  --out pblup_train 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [pblup_train.log].
+
+Loading phenotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/phenotypes.txt].
+Loading pedigree file ...
+10000 unique individuals have been detected in file [pedigree_hiblup.txt].
+
+1000 effective records without missing will be used for analysis.
+
+Single Trait Model Fitted:
+  Phenotype = 1 + PA(R[G]) + e
+
+Make index matrix for fixed effects and covariates ...
+Make index matrix for random effects ...
+
+Derive PA matrix ...
+
+Total 1000 individuals will be predicted.
+
+Total 2 variance components need to be estimated.
+Variance components estimation using: AI(20)
+The matrix V has a dimension of 1000 x 1000.
+Running ...
+Alg.	Iter.	LogL.	V(PA)	V(e)
+[AI]	1	-514.51	0.32328	0.70155	
+[AI]	2	-511.90	0.33286	0.70331	
+[AI]	3	-511.87	0.33287	0.70342	
+[AI]	4	-511.87	0.33288	0.70341	
+[Converged?] Yes!
+
+Summary of estimated variances and heritability:
+       Var Var_SE     h2  h2_SE h2_Pr(Chisq)
+ PA 0.3329 0.0880 0.3212 0.0809     0.000072
+  e 0.7034 0.0839 0.6788 0.0809       <2e-16
+Results of estimated variance components have been saved in the file [pblup_train.vars].
+
+Estimate fixed effects and random effects ...
+Summary of estimated coefficients:
+ Levels Estimation     SE
+     mu     0.0155 0.0367
+Coefficients of all covariates and fixed effects are saved in file [pblup_train.beta].
+Random effects of all individuals are saved in file [pblup_train.rand].
+
+Analysis finished: Thu Apr 02 14:47:38 2026
+Total running time: 0h0m1s

@@ -1,0 +1,91 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_223940_c18294  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Estimate h2 for my trait
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     heritability-analysis  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     I've loaded the heritability-analysis skill. To proceed with               
+     estimating h² for your trait, I need to know what data you have            
+     available. There are two methods:                                          
+                                                                                
+     ---                                                                        
+                                                                                
+     **Method 1: GCTA GREML (genotype + phenotype)**                            
+     Requires:                                                                  
+     - PLINK binary genotype files (.bed/.bim/.fam) — should be QC'd            
+     beforehand                                                                 
+     - Phenotype file with sample IDs in column 1 and trait values in           
+     remaining columns                                                          
+                                                                                
+     **Method 2: Phenotype-Only ICC (no genotype needed)**                      
+     Requires:                                                                  
+     - Phenotype file with repeated measurements per individual (multiple       
+     rows per sample)                                                           
+                                                                                
+     ---                                                                        
+                                                                                
+     To get started, please tell me:                                            
+                                                                                
+     1. Do you have genotype data (PLINK .bed/.bim/.fam)? If so, what's the     
+     path/prefix?                                                               
+     2. Do you have a phenotype file? What's the path?                          
+     3. Do you want to use Method 1 (full GREML with genotypes) or Method 2     
+     (phenotype-only ICC)?                                                      
+     4. Where should I save the output? (e.g., `output/heritability/`)          
+                                                                                
+     Once you provide these, I can run the appropriate pipeline. Note that      
+     GREML can be time-consuming — expect minutes to hours depending on         
+     your sample size (the number of individuals and SNPs).                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_223940_c18294
+
+Session:        20260701_223940_c18294
+Duration:       13s
+Messages:       5 (2 user, 2 tool calls)

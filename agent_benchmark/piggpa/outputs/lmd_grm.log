@@ -1,0 +1,40 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.4 Linux
+* Built at Apr  7 2025 11:00:19, by GCC 8.3
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 23:30:39 CST on Wed Jul 22 2026.
+Hostname: ecm-e3c2
+
+Options: 
+ 
+--bfile /workspace/output/genotype-qc/lmd.phe_qc 
+--make-grm 
+--autosome 
+--thread-num 4 
+--out /workspace/output/gcta-gwas/lmd_grm 
+
+The program will be running with up to 4 threads.
+Note: GRM is computed using the SNPs on the autosomes.
+Reading PLINK FAM file from [/workspace/output/genotype-qc/lmd.phe_qc.fam]...
+2770 individuals to be included from FAM file.
+2770 individuals to be included. 0 males, 0 females, 2770 unknown.
+Reading PLINK BIM file from [/workspace/output/genotype-qc/lmd.phe_qc.bim]...
+197702 SNPs to be included from BIM file(s).
+Computing the genetic relationship matrix (GRM) v2 ...
+Subset 1/1, no. subject 1-2770
+  2770 samples, 197702 markers, 3837835 GRM elements
+IDs for the GRM file have been saved in the file [/workspace/output/gcta-gwas/lmd_grm.grm.id]
+Computing GRM...
+  100% finished in 10.0 sec
+197702 SNPs have been processed.
+  Used 197702 valid SNPs.
+The GRM computation is completed.
+Saving GRM...
+GRM has been saved in the file [/workspace/output/gcta-gwas/lmd_grm.grm.bin]
+Number of SNPs in each pair of individuals has been saved in the file [/workspace/output/gcta-gwas/lmd_grm.grm.N.bin]
+
+Analysis finished at 23:30:50 CST on Wed Jul 22 2026
+Overall computational time: 10.26 sec.

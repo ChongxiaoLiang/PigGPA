@@ -1,0 +1,21 @@
+GWAS Summary Statistics
+============================================================
+
+Sample range: 1001-2000
+Chromosome: 1
+SNPs: 5556
+Sample size: 1000
+
+GWAS Results:
+  Significant SNPs (p<0.05): 0
+  Significant SNPs (p<0.01): 0
+  Significant SNPs (Bonferroni): 0
+
+Effect Statistics:
+  Effect range: [-0.2697, 0.3152]
+  Effect mean: -0.000324
+  Effect std: 0.0624
+
+Phenotype Statistics:
+  Phenotype mean: 0.0094
+  Phenotype std: 1.0178

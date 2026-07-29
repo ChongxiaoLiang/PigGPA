@@ -1,0 +1,115 @@
+
+╭────────────────────── PigGPA Agent v1.0.0 (2026.4.21) ───────────────────────╮
+│                                   Available Tools                            │
+│               ╰╮A ═════════ T╭╯   clarify: clarify                           │
+│                ╰╮C ═══════ G╭╯    code_execution: execute_code               │
+│                ╰╮T ═════ A╭╯      cronjob: cronjob                           │
+│                 ╰╮G ═══ C╭╯       delegation: delegate_task                  │
+│                  ╰╮A ═ T╭╯        file: patch, read_file, search_files,      │
+│                   ╰C╳G╯           write_file                                 │
+│                   ╭T╳A╮           homeassistant: ha_call_service,            │
+│                ╭╯G ═ C╰╮          ha_get_state, ...                          │
+│              ╭╯C ═══ G╰╮          image_gen: image_generate                  │
+│             ╭╯A ═════ T╰╮         memory: memory                             │
+│           ╭╯T ═══════ A╰╮         (and 9 more toolsets...)                   │
+│          ╭╯C ═════════ G╰╮                                                   │
+│       ┌──────────────────────┐    Available Skills                           │
+│       │       PigGPA         │    autonomous-ai-agents: claude-code, codex,  │
+│       │  ◈ Genomic breeding  │    opencode, piggpa-agent                     │
+│       │  ◈ Prediction        │    data-science: jupyter-live-kernel          │
+│       │  ◈ Annotation        │    general: bioinformatics,                   │
+│       └──────────────────────┘    complete-breeding-pipeline, duc...         │
+│                                   gwas-workflow: gwas-workflow-diagnostic    │
+│                                   mcp: mcporter, native-mcp                  │
+│     deepseek-v4-pro · PigGPA      note-taking: obsidian                      │
+│        /workspace/pigbole         piggpa-A: pig-annotation-track             │
+│  Session: 20260701_225710_dbfeea  piggpa-G: admixture-analysis,              │
+│                                   allele-genotype-frequency, ...             │
+│                                   piggpa-P: pig-mutbert                      │
+│                                   productivity: google-workspace, nano-pdf,  │
+│                                   notion, ocr-and-doc...                     │
+│                                   research: arxiv, llm-wiki, polymarket,     │
+│                                   research-paper-wri...                      │
+│                                   software-development: plan,                │
+│                                   requesting-code-review,                    │
+│                                   subagent-driven-d...                       │
+│                                                                              │
+│                                   17 tools · 56 skills · /help for commands  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Query: Calculate genomic breeding values
+Initializing agent...
+────────────────────────────────────────
+
+  │ 📚 skill     gebv-gprs-prediction  0.0s
+⚠️ Iteration budget exhausted (1/1) — asking model to summarise
+⚠️  Reached maximum iterations (1). Requesting summary...
+ ─  🐽 PigGPA  ──────────────────────────────────────────────────────────────── 
+                                                                                
+     跟我介绍一下 GEBV/GPRS                                                     
+     预测技能。要计算基因组估计育种值，我需要进行以下操作：                     
+                                                                                
+     ## GEBV 预测所需材料                                                       
+                                                                                
+     要运行 gebv-gprs-prediction 技能，我需要您提供以下三项输入：               
+                                                                                
+     1.  **PLINK 二进制文件 (`--bfile`)**：                                     
+         -   `.bed`、`.bim` 和 `.fam` 文件（PLINK 格式前缀）。                  
+         -   包含待预测个体的基因型数据。                                       
+                                                                                
+     2.  **SNP 效应文件 (`--snp-effect`)**：                                    
+         -   制表符分隔的文件，至少包含两列：                                   
+             -   `id`：SNP 标识符（需与 `.bim` 中的 SNP 名称匹配）。            
+             -   `add_a1`：加性 SNP 效应值（等位基因替换效应）。                
+         -   通常由 BLUP/GWAS/SNP 效应分析生成。                                
+                                                                                
+     3.  **预测样本 ID 文件 (`--pred-ids`，可选)**：                            
+         -   如果只希望对特定个体子集进行预测，可提供此文件。                   
+         -   每行一个样本 ID。若未提供，则默认使用所有样本。                    
+                                                                                
+     ## 工作流程概览                                                            
+                                                                                
+     此技能执行标准的基因组预测流程：                                           
+                                                                                
+     1.  **SNP 匹配**：将效应文件中的 SNP 与 `.bim`                             
+     文件进行匹配，仅使用共有 SNP。                                             
+     2.  **基因型提取**：从 `.bed` 文件中提取匹配 SNP 的基因型（0/1/2           
+     的等位基因计数）。                                                         
+     3.  **缺失基因型填补**：缺失值由 `2 × 等位基因频率`                        
+     替代（根据列均值估算）。                                                   
+     4.  **GEBV 计算**：核心公式为 `GEBV_i = Σ (genotype_ij ×                   
+     effect_j)`，即基因型向量与 SNP 效应向量的点积。                            
+                                                                                
+     ## 输出内容                                                                
+                                                                                
+     执行后会生成：                                                             
+                                                                                
+     -   **数值文件**：                                                         
+         -   `prediction_result.bv`：每头个体的预测育种值（`id` 和 `add_a1`     
+     列）。                                                                     
+         -   `prediction_summary.txt`（英文）和                                 
+     `prediction_summary-zh.txt`（中文）：平均值、标准差、最小值、最大值、      
+     分布区间统计及解读说明。                                                   
+     -   **可视化**：                                                           
+         -   `gebv_gprs_analysis.pdf` / `.png`（双图：GEBV 分布直方图 +         
+     GEBV 排名图）。                                                            
+     -   **日志**：`prediction_result.log`。                                    
+                                                                                
+     ---                                                                        
+                                                                                
+     **请提供您的数据文件路径，以便我继续分析：**                               
+                                                                                
+     -   您的 PLINK 二进制文件前缀是什么？                                      
+     -   您的 SNP 效应文件在哪里？                                              
+     -   是否有特定的待预测个体列表？（可选）                                   
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+⚠ Iteration budget reached (1/1) — response may be incomplete
+
+Resume this session with:
+  piggpa --resume 20260701_225710_dbfeea
+
+Session:        20260701_225710_dbfeea
+Duration:       18s
+Messages:       5 (2 user, 2 tool calls)

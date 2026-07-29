@@ -1,0 +1,34 @@
+#=============================================================#
+#                    WELCOME TO USE HIBLUP                    #
+#           Home: www.hiblup.com                              #
+#       Software: Linux x86_64 v1.6.0 (2025-09-29 Release)    #
+#     Developers: Lilin Yin, Haohao Zhang and Xiaolei Liu     #
+#       Copyright (c) 2021-present. All rights reserved.      #
+#=============================================================#
+Analysis started: Tue Apr 07 10:53:58 2026
+Hostname: ln01
+
+Commands:
+/public/share/likui/hanyu/software/bin/hiblup \
+  --ld \
+  --bfile /public/share/likui/hanyu/testdata/In-silico-data/simulated_population \
+  --keep train_samples.txt \
+  --extract chr1_snps.txt \
+  --thread 4 \
+  --out ld_result 
+
+Program will be running on up to 4 threads.
+The log will be recorded in file [ld_result.log].
+
+Loading genotype file ...
+10000 individuals have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.fam].
+100000 markers have been detected in file [/public/share/likui/hanyu/testdata/In-silico-data/simulated_population.bim].
+Calculate allele frequency for 5556 markers using 1000 individuals ...
+Cut the genome into windows ...
+Total 105 windows are detected on the given size of 1000000bp.
+
+Calculate pairwise LD correlation (r) for windows ...
+The pairwise LD between SNPs are saved in files [ld_result.bin, ld_result.info].
+
+Analysis finished: Tue Apr 07 10:53:58 2026
+Total running time: 0h0m0s
